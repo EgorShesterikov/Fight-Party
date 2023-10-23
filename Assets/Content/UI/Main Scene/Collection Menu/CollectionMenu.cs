@@ -1,3 +1,4 @@
+using FightParty.Audio;
 using System;
 using UnityEngine;
 
@@ -12,13 +13,17 @@ namespace FightParty.UI.MainScene
 
         private CollectionMenuView _view;
 
-        public CollectionMenu(CollectionMenuView view)
+        private GlobalSFXSource _audio;
+
+        public CollectionMenu(CollectionMenuView view, GlobalSFXSource audio)
         {
             _view = view;
 
-            _view.LeftButton.onClick.AddListener(() => SwitchRingToLeft());
-            _view.SelectButton.onClick.AddListener(() => SelectRing());
-            _view.RightButton.onClick.AddListener(() => SwitchRingToRight());
+            _view.LeftButton.onClick.AddListener(SwitchRingToLeft);
+            _view.SelectButton.onClick.AddListener(SelectRing);
+            _view.RightButton.onClick.AddListener(SwitchRingToRight);
+
+            _audio = audio;
         }
 
         public CollectionMenuView View => _view;
@@ -32,6 +37,8 @@ namespace FightParty.UI.MainScene
 
         private void SwitchRingToLeft()
         {
+            _audio.PlayClick();
+
             Debug.Log("Перелистываем влево!");
 
             ChangedRing?.Invoke(_currentRing);
@@ -39,6 +46,8 @@ namespace FightParty.UI.MainScene
 
         private void SwitchRingToRight()
         {
+            _audio.PlayClick();
+
             Debug.Log("Перелистываем вправо!");
 
             ChangedRing?.Invoke(_currentRing);
@@ -46,6 +55,8 @@ namespace FightParty.UI.MainScene
 
         private void SelectRing()
         {
+            _audio.PlayClick();
+
             Debug.Log("Проверка, можно ли выбрать");
 
             SelectedRing?.Invoke();

@@ -1,3 +1,4 @@
+using FightParty.Audio;
 using System;
 
 namespace FightParty.UI.MainScene
@@ -10,13 +11,17 @@ namespace FightParty.UI.MainScene
 
         private MainMenuView _view;
 
-        public MainMenu(MainMenuView view)
+        private GlobalSFXSource _audio;
+
+        public MainMenu(MainMenuView view, GlobalSFXSource audio)
         { 
             _view = view;
 
-            _view.PlayButton.onClick.AddListener(() => ClickedPlay?.Invoke());
-            _view.CollectionButton.onClick.AddListener(() => ClickedCollection?.Invoke());
-            _view.SettingsButton.onClick.AddListener(() => ClickedSettings?.Invoke());
+            _view.PlayButton.onClick.AddListener(ClickPlayButton);
+            _view.CollectionButton.onClick.AddListener(ClickCollectionButton);
+            _view.SettingsButton.onClick.AddListener(ClickSettingsButton);
+
+            _audio = audio;
         }
 
         public MainMenuView View => _view;
@@ -26,6 +31,27 @@ namespace FightParty.UI.MainScene
             _view.PlayButton.onClick.RemoveAllListeners();
             _view.CollectionButton.onClick.RemoveAllListeners();
             _view.SettingsButton.onClick.RemoveAllListeners();
+        }
+
+        private void ClickPlayButton()
+        {
+            _audio.PlayClick();
+
+            ClickedPlay?.Invoke();
+        }
+
+        private void ClickCollectionButton()
+        {
+            _audio.PlayClick();
+
+            ClickedCollection?.Invoke();
+        }
+
+        private void ClickSettingsButton()
+        {
+            _audio.PlayClick();
+
+            ClickedSettings?.Invoke();
         }
     }
 }

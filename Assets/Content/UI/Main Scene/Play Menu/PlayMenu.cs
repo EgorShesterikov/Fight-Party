@@ -1,3 +1,4 @@
+using FightParty.Audio;
 using System;
 
 namespace FightParty.UI.MainScene
@@ -10,13 +11,17 @@ namespace FightParty.UI.MainScene
 
         private PlayMenuView _view;
 
-        public PlayMenu(PlayMenuView view)
+        private GlobalSFXSource _audio;
+
+        public PlayMenu(PlayMenuView view, GlobalSFXSource audio)
         {
             _view = view;
 
-            _view.BattleButton.onClick.AddListener(() => ClickedBattle?.Invoke());
-            _view.BackButton.onClick.AddListener(() => ClickedBack?.Invoke());
-            _view.SurvivalButton.onClick.AddListener(() => ClickedSurvival?.Invoke());
+            _view.BattleButton.onClick.AddListener(ClickBattleButton);
+            _view.BackButton.onClick.AddListener(ClickBackButton);
+            _view.SurvivalButton.onClick.AddListener(ClickSurvivalButton);
+
+            _audio = audio;
         }
 
         public PlayMenuView View => _view;
@@ -26,6 +31,27 @@ namespace FightParty.UI.MainScene
             _view.BattleButton.onClick.RemoveAllListeners();
             _view.BackButton.onClick.RemoveAllListeners();
             _view.SurvivalButton.onClick.RemoveAllListeners();
+        }
+
+        private void ClickBattleButton()
+        {
+            _audio.PlayClick();
+
+            ClickedBattle?.Invoke();
+        }
+
+        private void ClickBackButton()
+        {
+            _audio.PlayClick();
+
+            ClickedBack?.Invoke();
+        }
+
+        private void ClickSurvivalButton()
+        {
+            _audio.PlayClick();
+
+            ClickedSurvival?.Invoke();
         }
     }
 }
