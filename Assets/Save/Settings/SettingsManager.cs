@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FightParty.Save
 {
-    public class SettingsManager : ISave<SettingsJSON>
+    public class SettingsManager : ISave<SettingsJSON>, ILoad<SettingsJSON>
     {
         private SettingsManagerConfig _config;
 

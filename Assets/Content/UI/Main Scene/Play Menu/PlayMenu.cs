@@ -1,9 +1,13 @@
 using FightParty.Audio;
+using FightParty.Save;
+using I2.Loc;
 using System;
+using System.Diagnostics;
+using Zenject;
 
 namespace FightParty.UI.MainScene
 {
-    public class PlayMenu : IDisposable
+    public class PlayMenu : IDisposable, IInitializable
     {
         public event Action ClickedBattle;
         public event Action ClickedBack;
@@ -13,7 +17,9 @@ namespace FightParty.UI.MainScene
 
         private GlobalSFXSource _audio;
 
-        public PlayMenu(PlayMenuView view, GlobalSFXSource audio)
+        private ILoad<ProgressJSON> _progressManager;
+
+        public PlayMenu(PlayMenuView view, GlobalSFXSource audio, ILoad<ProgressJSON> progressManager)
         {
             _view = view;
 
@@ -22,6 +28,8 @@ namespace FightParty.UI.MainScene
             _view.SurvivalButton.onClick.AddListener(ClickSurvivalButton);
 
             _audio = audio;
+
+            _progressManager = progressManager;
         }
 
         public PlayMenuView View => _view;
@@ -31,6 +39,14 @@ namespace FightParty.UI.MainScene
             _view.BattleButton.onClick.RemoveAllListeners();
             _view.BackButton.onClick.RemoveAllListeners();
             _view.SurvivalButton.onClick.RemoveAllListeners();
+        }
+
+        public void Initialize()
+        {
+            ProgressJSON progressJSON = _progressManager.Load();
+
+            _view.ChangeBattleRating(progressJSON.BattleRating);
+            _view.ChangeSurvivalTime(progressJSON.SurvivalTime);
         }
 
         private void ClickBattleButton()

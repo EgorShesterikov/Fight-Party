@@ -105,8 +105,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - 'Rating:'
-      - "\u0420\u0435\u0439\u0442\u0438\u043D\u0433:"
+      - 'Rating: '
+      - "\u0420\u0435\u0439\u0442\u0438\u043D\u0433: "
       Flags: 0000
       Languages_Touch: []
     - Term: Interfaces/PlayMenu-4
@@ -133,8 +133,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - 'Record:'
-      - "\u0420\u0435\u043A\u043E\u0440\u0434:"
+      - 'Record: '
+      - "\u0420\u0435\u043A\u043E\u0440\u0434: "
       Flags: 0000
       Languages_Touch: []
     - Term: Interfaces/PlayMenu-7
@@ -216,7 +216,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwwPxavdj2IDC5O3M07_af3d8e6i5WU2rVpepMWokCbaIHjX6X7VxZP8mQCbPjt5IsA/exec
     Google_SpreadsheetKey: 1CGwW4-2ZfkErNuph3qzC1JXMYJhkJWgQqe2K4h2gD-o
     Google_SpreadsheetName: I2Loc Fight Party
-    Google_LastUpdatedVersion: 1698072844892
+    Google_LastUpdatedVersion: 1698139428059
     Google_Password: change_this
     GoogleUpdateFrequency: 3
     GoogleInEditorCheckFrequency: 2

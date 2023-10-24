@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8692c14d5bdd8a4f8b2f7676b18b135, type: 3}
-  m_Name: SettingsManagerConfig
+  m_Script: {fileID: 11500000, guid: a6de704b956b9a8418e9d9f8b7c2bef4, type: 3}
+  m_Name: ProgressManagerConfig
   m_EditorClassIdentifier: 
-  _fileName: FP_Settings
-  _defaultMusicVolue: 0.5
-  _defaultSFXVolue: 0.6
-  _defaultLanguage: 0
+  _fileName: FP_Progress
+  _defaultBattleRating: 0
+  _defaultSurvivalTime: 0
+  _defaultRingIndex: 0

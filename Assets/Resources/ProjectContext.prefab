@@ -76,3 +76,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settingsManagerConfig: {fileID: 11400000, guid: 1e3d1eb0ede85aa40ae23063619759e7,
     type: 2}
+  _progressManagerConfig: {fileID: 11400000, guid: fe06375f91894914880ba29514782ff4,
+    type: 2}

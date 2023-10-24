@@ -7,6 +7,7 @@ namespace FightParty.Installers
     public class GlobalInstaller : MonoInstaller
     {
         [SerializeField] private SettingsManagerConfig _settingsManagerConfig;
+        [SerializeField] private ProgressManagerConfig _progressManagerConfig;
 
         public override void InstallBindings()
         {
@@ -21,6 +22,9 @@ namespace FightParty.Installers
         {
             Container.BindInstance(_settingsManagerConfig).AsSingle();
             Container.BindInterfacesAndSelfTo<SettingsManager>().FromNew().AsSingle();
+
+            Container.BindInstance(_progressManagerConfig).AsSingle();
+            Container.BindInterfacesAndSelfTo<ProgressManager>().FromNew().AsSingle();
         }
     }
 }
