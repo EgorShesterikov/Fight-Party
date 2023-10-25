@@ -223,7 +223,7 @@ MonoBehaviour:
     GoogleUpdateSynchronization: 1
     GoogleUpdateDelay: 0
     Assets: []
-    Spreadsheet_LocalFileName: 
+    Spreadsheet_LocalFileName: https://script.google.com/macros/s/AKfycbwwPxavdj2IDC5O3M07_af3d8e6i5WU2rVpepMWokCbaIHjX6X7VxZP8mQCbPjt5IsA/exec
     Spreadsheet_LocalCSVSeparator: ','
     Spreadsheet_LocalCSVEncoding: utf-8
     Spreadsheet_SpecializationAsRows: 1

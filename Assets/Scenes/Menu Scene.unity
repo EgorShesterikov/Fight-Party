@@ -3141,7 +3141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 759930198}
   m_Layer: 0
-  m_Name: Ring Output Texture
+  m_Name: 3D Output Texture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6916,7 +6916,7 @@ GameObject:
   - component: {fileID: 1888601417}
   - component: {fileID: 1888601415}
   m_Layer: 0
-  m_Name: Ring View Camera
+  m_Name: 3D View Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
