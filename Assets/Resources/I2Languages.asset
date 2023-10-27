@@ -145,6 +145,46 @@ MonoBehaviour:
       - "\u041D\u0430\u0437\u0430\u0434"
       Flags: 0000
       Languages_Touch: []
+    - Term: Interfaces/PlayMenu-8
+      TermType: 0
+      Description: 
+      Languages:
+      - Exit?
+      - "\u0412\u044B\u0439\u0442\u0438?"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Interfaces/PlayMenu-9
+      TermType: 0
+      Description: 
+      Languages:
+      - Yes...
+      - "\u0414\u0430..."
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Interfaces/PlayMenu-10
+      TermType: 0
+      Description: 
+      Languages:
+      - No!
+      - "\u041D\u0435\u0442!"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Interfaces/PlayMenu-11
+      TermType: 0
+      Description: 
+      Languages:
+      - 'Round: '
+      - "\u0420\u0430\u0443\u043D\u0434: "
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Interfaces/PlayMenu-12
+      TermType: 0
+      Description: 
+      Languages:
+      - '"fight"'
+      - "\"\u0431\u043E\u0439\""
+      Flags: 0000
+      Languages_Touch: []
     - Term: Interfaces/SettingsMenu-0
       TermType: 0
       Description: 
@@ -216,7 +256,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwwPxavdj2IDC5O3M07_af3d8e6i5WU2rVpepMWokCbaIHjX6X7VxZP8mQCbPjt5IsA/exec
     Google_SpreadsheetKey: 1CGwW4-2ZfkErNuph3qzC1JXMYJhkJWgQqe2K4h2gD-o
     Google_SpreadsheetName: I2Loc Fight Party
-    Google_LastUpdatedVersion: 1698139428059
+    Google_LastUpdatedVersion: 1698418976282
     Google_Password: change_this
     GoogleUpdateFrequency: 3
     GoogleInEditorCheckFrequency: 2
@@ -227,3 +267,4 @@ MonoBehaviour:
     Spreadsheet_LocalCSVSeparator: ','
     Spreadsheet_LocalCSVEncoding: utf-8
     Spreadsheet_SpecializationAsRows: 1
+    Spreadsheet_SortRows: 1
