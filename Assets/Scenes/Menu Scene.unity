@@ -264,6 +264,8 @@ GameObject:
   - component: {fileID: 36512484}
   - component: {fileID: 36512483}
   - component: {fileID: 36512485}
+  - component: {fileID: 36512486}
+  - component: {fileID: 36512487}
   m_Layer: 0
   m_Name: Zenject Scene Context
   m_TagString: Untagged
@@ -286,6 +288,8 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 36512485}
+  - {fileID: 36512487}
+  - {fileID: 36512486}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -330,11 +334,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3edb0f3fe13acb499366c7d67a20091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _musicSource: {fileID: 277588652}
-  _globalSFXSource: {fileID: 1754357362}
   _mainMenuView: {fileID: 144326531}
   _playMenuView: {fileID: 1267843967}
   _collectionMenuView: {fileID: 82807566}
+--- !u!114 &36512486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36512482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3486a99124c4a1c45b7698a7fd23c452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _musicSource: {fileID: 277588652}
+  _globalSFXSource: {fileID: 1754357362}
+--- !u!114 &36512487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36512482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8171c19933f8a14eaee56f835bbe170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _settingsMenuView: {fileID: 1832652911}
 --- !u!1 &39743894
 GameObject:

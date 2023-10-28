@@ -3,27 +3,21 @@ using UnityEngine;
 
 namespace FightParty.UI.MainScene
 {
-    public class MainSceneUIMediator : IDisposable
+    public class MainSceneUIMediator : UIMediator, IDisposable
     {
-        private const float SwitchingInterfacesDelay = 0.5f;
-
         private MainMenu _mainMenu;
         private PlayMenu _playMenu;
         private CollectionMenu _collectionMenu;
         private SettingsMenu _settingsMenu;
 
-        private CallBackTimer _timer;
-
         public MainSceneUIMediator(MainMenu mainMenu, PlayMenu playMenu, 
             CollectionMenu collectionMenu, SettingsMenu settingsMenu,
-            CallBackTimer callBackTimer)
+            CallBackTimer callBackTimer) : base(callBackTimer)
         {
             _mainMenu = mainMenu;
             _playMenu = playMenu;
             _collectionMenu = collectionMenu;
             _settingsMenu = settingsMenu;
-
-            _timer = callBackTimer;
 
             _mainMenu.ClickedPlay += OpenPlayMenu;
             _mainMenu.ClickedCollection += OpenCollectionMenu;
