@@ -11,9 +11,9 @@ namespace FightParty
         public CallBackTimer(MonoBehaviour context)
             => _context = context;
 
-        public void Play(float time, Action callBack, bool isUnscaledTime = false) => _context.StartCoroutine(Time(time, callBack, isUnscaledTime));
+        public void Play(float time, Action callBack, bool isUnscaledTime = false) => _context.StartCoroutine(TimeProcess(time, callBack, isUnscaledTime));
 
-        private IEnumerator Time(float time, Action callBack, bool isUnscaledTime)
+        private IEnumerator TimeProcess(float time, Action callBack, bool isUnscaledTime)
         {
             if (isUnscaledTime)
                 yield return new WaitForSecondsRealtime(time);

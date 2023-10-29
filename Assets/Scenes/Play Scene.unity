@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 20395900}
   m_Layer: 0
-  m_Name: Ring
+  m_Name: View World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 20987690}
   - component: {fileID: 20987689}
   m_Layer: 0
-  m_Name: Ring Model Image
+  m_Name: Texture World Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1377,7 +1377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012ff1d76d925fd4dbe07f9a1e5f4fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startAnimation: 0
+  startAnimation: 1
   _settingsButton: {fileID: 1207378785}
   _exitButton: {fileID: 1441054770}
 --- !u!1 &764933312
@@ -2173,6 +2173,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 113649336}
     m_Modifications:
+    - target: {fileID: 99708922046480531, guid: f91ebb9a09072024c958b2e8b90f632a,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.59996
+      objectReference: {fileID: 0}
+    - target: {fileID: 99708922046480531, guid: f91ebb9a09072024c958b2e8b90f632a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1328772974873597892, guid: f91ebb9a09072024c958b2e8b90f632a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2087245060568988672, guid: f91ebb9a09072024c958b2e8b90f632a,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.59996
+      objectReference: {fileID: 0}
+    - target: {fileID: 2087245060568988672, guid: f91ebb9a09072024c958b2e8b90f632a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4795768353670185218, guid: f91ebb9a09072024c958b2e8b90f632a,
         type: 3}
       propertyPath: m_Name
@@ -2282,6 +2307,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905140815484516905, guid: f91ebb9a09072024c958b2e8b90f632a,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.59996
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905140815484516905, guid: f91ebb9a09072024c958b2e8b90f632a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905140815484516905, guid: f91ebb9a09072024c958b2e8b90f632a,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.59996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7092303595836477325, guid: f91ebb9a09072024c958b2e8b90f632a,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.59996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7092303595836477325, guid: f91ebb9a09072024c958b2e8b90f632a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7092303595836477325, guid: f91ebb9a09072024c958b2e8b90f632a,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.59996
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3069,7 +3124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481ab606793a67349be805c13febeba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTarget: {fileID: 628229491}
+  mTarget: {fileID: 1033953746}
   mAlignment_RTL: 514
   mAlignment_LTR: 514
   mAlignmentWasRTL: 0
@@ -3670,15 +3725,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3336466162757538559, guid: d328b1dd8ac67c84e8db7d3f3fd86e98,
+        type: 3}
+      propertyPath: mLocalizeTarget
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4985557837841399902, guid: d328b1dd8ac67c84e8db7d3f3fd86e98,
+        type: 3}
+      propertyPath: mLocalizeTarget
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6045534427962729498, guid: d328b1dd8ac67c84e8db7d3f3fd86e98,
+        type: 3}
+      propertyPath: mLocalizeTarget
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6207960313992374206, guid: d328b1dd8ac67c84e8db7d3f3fd86e98,
         type: 3}
       propertyPath: m_Name
       value: Battle Menu
-      objectReference: {fileID: 0}
-    - target: {fileID: 8237020909404908529, guid: d328b1dd8ac67c84e8db7d3f3fd86e98,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -225,7 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 28870820}
   m_Layer: 0
-  m_Name: Ring
+  m_Name: View World
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1355,7 +1355,7 @@ GameObject:
   - component: {fileID: 207455362}
   - component: {fileID: 207455361}
   m_Layer: 0
-  m_Name: Ring Model Image
+  m_Name: Texture World Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5299,8 +5299,8 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0

@@ -1,4 +1,4 @@
-using FightParty.UI.MainScene;
+using FightParty.Game.MainScene;
 using UnityEngine;
 using Zenject;
 

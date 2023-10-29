@@ -1,4 +1,4 @@
-﻿using FightParty.UI;
+﻿using FightParty.Game;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,8 +17,8 @@ namespace FightParty.Audio
 
         private const float ChangeVolumeMultiplicator = 20f;
 
-        private const string PatchFolderAudioMixer = "Audio";
-        private const string PatchNameAudioMixer = "AudioMixer";
+        private const string PathFolderAudioMixer = "Audio";
+        private const string PathNameAudioMixer = "AudioMixer";
 
         private AudioMixer _audioMixer;
 
@@ -34,7 +34,7 @@ namespace FightParty.Audio
                 changer.ChangedSound += ChangeVolumeSFX;
             }
 
-            _audioMixer = Resources.Load<AudioMixer>(Path.Combine(PatchFolderAudioMixer, PatchNameAudioMixer));
+            _audioMixer = Resources.Load<AudioMixer>(Path.Combine(PathFolderAudioMixer, PathNameAudioMixer));
         }
 
         public void Dispose()

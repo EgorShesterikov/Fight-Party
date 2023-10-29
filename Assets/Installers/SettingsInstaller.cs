@@ -1,4 +1,4 @@
-﻿using FightParty.UI;
+﻿using FightParty.Game;
 using UnityEngine;
 using Zenject;
 

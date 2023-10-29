@@ -54,7 +54,7 @@ MonoBehaviour:
   _buildsReflectionBakingCoverageMode: 0
   _settings:
     _ensureDeterministicDestructionOrderOnApplicationQuit: 0
-    _displayWarningWhenResolvingDuringInstall: 1
+    _displayWarningWhenResolvingDuringInstall: 0
     _validationRootResolveMethod: 0
     _validationErrorResponse: 0
     _signalSettings:
@@ -78,3 +78,5 @@ MonoBehaviour:
     type: 2}
   _progressManagerConfig: {fileID: 11400000, guid: fe06375f91894914880ba29514782ff4,
     type: 2}
+  _screenFader: {fileID: -8636574369134423889, guid: d902c8d648ff498488193fcc3f37f34d,
+    type: 3}
