@@ -30,9 +30,9 @@ namespace FightParty.Game.MainScene
 
         public void Dispose()
         {
-            _view.LeftButton.onClick.RemoveAllListeners();
-            _view.SelectButton.onClick.RemoveAllListeners();
-            _view.RightButton.onClick.RemoveAllListeners();
+            _view.LeftButton.onClick.RemoveListener(SwitchRingToLeft);
+            _view.SelectButton.onClick.RemoveListener(SelectRing);
+            _view.RightButton.onClick.RemoveListener(SwitchRingToRight);
         }
 
         private void SwitchRingToLeft()

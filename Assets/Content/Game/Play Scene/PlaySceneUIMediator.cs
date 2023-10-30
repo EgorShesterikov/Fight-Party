@@ -9,7 +9,7 @@ namespace FightParty.Game.PlayScene
         private SettingsMenu _settingsMenu;
 
         public PlaySceneUIMediator(GamePlayMenu gamePlayMenu, ExitMenu exitMenu, 
-            SettingsMenu settingsMenu, CallBackTimer timer) : base(timer)
+            SettingsMenu settingsMenu)
         {
             _gamePlayMenu = gamePlayMenu;
             _exitMenu = exitMenu;
@@ -43,7 +43,13 @@ namespace FightParty.Game.PlayScene
 
         private void ExitPlayScene()
         {
-            UnityEngine.Debug.Log("Возврат в главное меню с вычетом очков");
+            _sceenFader.Set(ScreenFader.TypeFade.Appear, () =>
+            {
+                UnityEngine.Debug.Log("Возврат в главное меню с вычетом очков");
+
+                _sceneLoader.GoToMainScene();
+                _sceenFader.Set(ScreenFader.TypeFade.Disappear);
+            });
         }
         private void DontExitPlayScene()
         {

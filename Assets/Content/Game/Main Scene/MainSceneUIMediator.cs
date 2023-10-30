@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 namespace FightParty.Game.MainScene
 {
@@ -11,8 +10,7 @@ namespace FightParty.Game.MainScene
         private SettingsMenu _settingsMenu;
 
         public MainSceneUIMediator(MainMenu mainMenu, PlayMenu playMenu, 
-            CollectionMenu collectionMenu, SettingsMenu settingsMenu,
-            CallBackTimer callBackTimer) : base(callBackTimer)
+            CollectionMenu collectionMenu, SettingsMenu settingsMenu)
         {
             _mainMenu = mainMenu;
             _playMenu = playMenu;
@@ -64,7 +62,11 @@ namespace FightParty.Game.MainScene
 
         private void StartBattleMode()
         {
-            Debug.Log("Переход в режим сражения!");
+            _sceenFader.Set(ScreenFader.TypeFade.Appear, () =>
+            {
+                _sceneLoader.GoToPlayScene(new SceneLoader.LevelLoadingData(0));
+                _sceenFader.Set(ScreenFader.TypeFade.Disappear);
+            });
         }
         private void ClosePlayMenu()
         {
@@ -73,7 +75,11 @@ namespace FightParty.Game.MainScene
         }
         private void StartSurvivalMode()
         {
-            Debug.Log("Переход в режим выживания!");
+            _sceenFader.Set(ScreenFader.TypeFade.Appear, () =>
+            {
+                _sceneLoader.GoToPlayScene(new SceneLoader.LevelLoadingData(1));
+                _sceenFader.Set(ScreenFader.TypeFade.Disappear);
+            }); 
         }
 
         private void CloseCollectionMenu()

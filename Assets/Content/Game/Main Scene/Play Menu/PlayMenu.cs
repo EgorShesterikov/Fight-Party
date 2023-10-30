@@ -1,8 +1,6 @@
 using FightParty.Audio;
 using FightParty.Save;
-using I2.Loc;
 using System;
-using System.Diagnostics;
 using Zenject;
 
 namespace FightParty.Game.MainScene
@@ -36,9 +34,9 @@ namespace FightParty.Game.MainScene
 
         public void Dispose()
         {
-            _view.BattleButton.onClick.RemoveAllListeners();
-            _view.BackButton.onClick.RemoveAllListeners();
-            _view.SurvivalButton.onClick.RemoveAllListeners();
+            _view.BattleButton.onClick.RemoveListener(ClickBattleButton);
+            _view.BackButton.onClick.RemoveListener(ClickBackButton);
+            _view.SurvivalButton.onClick.RemoveListener(ClickSurvivalButton);
         }
 
         public void Initialize()

@@ -28,9 +28,9 @@ namespace FightParty.Game.MainScene
 
         public void Dispose()
         {
-            _view.PlayButton.onClick.RemoveAllListeners();
-            _view.CollectionButton.onClick.RemoveAllListeners();
-            _view.SettingsButton.onClick.RemoveAllListeners();
+            _view.PlayButton.onClick.RemoveListener(ClickPlayButton);
+            _view.CollectionButton.onClick.RemoveListener(ClickCollectionButton);
+            _view.SettingsButton.onClick.RemoveListener(ClickSettingsButton);
         }
 
         private void ClickPlayButton()

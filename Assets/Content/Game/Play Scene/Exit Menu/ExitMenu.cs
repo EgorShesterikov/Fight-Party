@@ -26,8 +26,8 @@ namespace FightParty.Game.PlayScene
 
         public void Dispose()
         {
-            _view.YesExitButton.onClick.RemoveAllListeners();
-            _view.NoExitButton.onClick.RemoveAllListeners();
+            _view.YesExitButton.onClick.RemoveListener(ClickYesExitButton);
+            _view.NoExitButton.onClick.RemoveListener(ClickNoExitButton);
         }
 
         private void ClickYesExitButton()

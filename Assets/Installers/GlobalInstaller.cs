@@ -1,4 +1,5 @@
 using FightParty.Game;
+using FightParty.Game.SceneLoader;
 using FightParty.Save;
 using UnityEngine;
 using Zenject;
@@ -20,6 +21,8 @@ namespace FightParty.Installers
             BindSaveManagers();
 
             BindScreenFader();
+
+            BindSceneLoader();
         }
 
         private void BindCallBackTimer() 
@@ -37,7 +40,15 @@ namespace FightParty.Installers
         private void BindScreenFader()
         {
             ScreenFader screenFader = Instantiate(_screenFader, transform);
+
             Container.BindInstances(screenFader);
+        }
+
+        private void BindSceneLoader()
+        {
+            Container.Bind<ZenjectSceneLoaderWrapper>().FromNew().AsSingle();
+            Container.BindInterfacesAndSelfTo<SceneLoader>().FromNew().AsSingle();
+            Container.BindInterfacesAndSelfTo<SceneLoadMediator>().FromNew().AsSingle(); 
         }
     }
 }
