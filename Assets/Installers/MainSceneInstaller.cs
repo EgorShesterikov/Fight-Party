@@ -1,3 +1,4 @@
+using FightParty.Game;
 using FightParty.Game.MainScene;
 using UnityEngine;
 using Zenject;
@@ -12,6 +13,13 @@ namespace FightParty.Installers
 
         public override void InstallBindings()
         {
+            BindUIInterfaces();
+
+            BindGameModeFactory();
+        }
+
+        private void BindUIInterfaces()
+        {
             Container.BindInterfacesAndSelfTo<MainMenu>().FromNew().AsSingle();
             Container.BindInterfacesAndSelfTo<PlayMenu>().FromNew().AsSingle();
             Container.BindInterfacesAndSelfTo<CollectionMenu>().FromNew().AsSingle();
@@ -22,5 +30,8 @@ namespace FightParty.Installers
 
             Container.BindInterfacesAndSelfTo<MainSceneUIMediator>().FromNew().AsSingle();
         }
+
+        private void BindGameModeFactory()
+            => Container.Bind<GameModeFactory>().FromNew().AsSingle();
     }
 }

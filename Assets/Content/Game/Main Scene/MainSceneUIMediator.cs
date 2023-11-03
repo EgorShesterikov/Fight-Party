@@ -1,3 +1,4 @@
+using FightParty.Game.SceneLoader;
 using System;
 
 namespace FightParty.Game.MainScene
@@ -9,8 +10,11 @@ namespace FightParty.Game.MainScene
         private CollectionMenu _collectionMenu;
         private SettingsMenu _settingsMenu;
 
+        private GameModeFactory _gameModeFactory;
+
         public MainSceneUIMediator(MainMenu mainMenu, PlayMenu playMenu, 
-            CollectionMenu collectionMenu, SettingsMenu settingsMenu)
+            CollectionMenu collectionMenu, SettingsMenu settingsMenu, 
+            GameModeFactory gameModeFactory)
         {
             _mainMenu = mainMenu;
             _playMenu = playMenu;
@@ -28,6 +32,8 @@ namespace FightParty.Game.MainScene
             _collectionMenu.SelectedRing += CloseCollectionMenu;
 
             _settingsMenu.ClickedBack += CloseSettingsMenu;
+
+            _gameModeFactory = gameModeFactory;
         }
 
         public void Dispose()
@@ -64,7 +70,7 @@ namespace FightParty.Game.MainScene
         {
             _sceenFader.Set(ScreenFader.TypeFade.Appear, () =>
             {
-                _sceneLoader.GoToPlayScene(new SceneLoader.LevelLoadingData(0));
+                _sceneLoader.GoToPlayScene(new LoadingData(_gameModeFactory.Get(GameTypes.Battle)));
                 _sceenFader.Set(ScreenFader.TypeFade.Disappear);
             });
         }
@@ -77,7 +83,7 @@ namespace FightParty.Game.MainScene
         {
             _sceenFader.Set(ScreenFader.TypeFade.Appear, () =>
             {
-                _sceneLoader.GoToPlayScene(new SceneLoader.LevelLoadingData(1));
+                _sceneLoader.GoToPlayScene(new LoadingData(_gameModeFactory.Get(GameTypes.Survival)));
                 _sceenFader.Set(ScreenFader.TypeFade.Disappear);
             }); 
         }

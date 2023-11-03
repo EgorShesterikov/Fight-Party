@@ -169,7 +169,7 @@ MonoBehaviour:
       - "\u041D\u0435\u0442!"
       Flags: 0000
       Languages_Touch: []
-    - Term: Interfaces/PlayMenu-11
+    - Term: Interfaces/BattleMenu-0
       TermType: 0
       Description: 
       Languages:
@@ -177,7 +177,7 @@ MonoBehaviour:
       - "\u0420\u0430\u0443\u043D\u0434: "
       Flags: 0000
       Languages_Touch: []
-    - Term: Interfaces/PlayMenu-12
+    - Term: Interfaces/BattleMenu-1
       TermType: 0
       Description: 
       Languages:
@@ -185,7 +185,7 @@ MonoBehaviour:
       - "\"\u0432\u044B\u0431\u043E\u0440\""
       Flags: 0000
       Languages_Touch: []
-    - Term: Interfaces/PlayMenu-13
+    - Term: Interfaces/BattleMenu-2
       TermType: 0
       Description: 
       Languages:
@@ -193,7 +193,7 @@ MonoBehaviour:
       - "\"\u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0430\""
       Flags: 0000
       Languages_Touch: []
-    - Term: Interfaces/PlayMenu-14
+    - Term: Interfaces/BattleMenu-3
       TermType: 0
       Description: 
       Languages:
@@ -201,7 +201,7 @@ MonoBehaviour:
       - "\"\u0441\u043F\u043E\u0441\u043E\u0431\u043D\u043E\u0441\u0442\u0438\""
       Flags: 0000
       Languages_Touch: []
-    - Term: Interfaces/PlayMenu-15
+    - Term: Interfaces/BattleMenu-4
       TermType: 0
       Description: 
       Languages:
@@ -242,6 +242,38 @@ MonoBehaviour:
       Flags: 0000
       Languages_Touch: []
     - Term: Interfaces/BattleResultMenu-4
+      TermType: 0
+      Description: 
+      Languages:
+      - Menu
+      - "\u041C\u0435\u043D\u044E"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Interfaces/SurvivalMenu-0
+      TermType: 0
+      Description: 
+      Languages:
+      - Time
+      - "\u0412\u0440\u0435\u043C\u044F"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Interfaces/SurvivalMenu-1
+      TermType: 0
+      Description: 
+      Languages:
+      - Record updated
+      - "\u0420\u0435\u043A\u043E\u0440\u0434 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Interfaces/SurvivalMenu-2
+      TermType: 0
+      Description: 
+      Languages:
+      - Record not updated
+      - "\u0420\u0435\u043A\u043E\u0440\u0434 \u043D\u0435 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Interfaces/SurvivalMenu-3
       TermType: 0
       Description: 
       Languages:
@@ -320,7 +352,7 @@ MonoBehaviour:
     Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwwPxavdj2IDC5O3M07_af3d8e6i5WU2rVpepMWokCbaIHjX6X7VxZP8mQCbPjt5IsA/exec
     Google_SpreadsheetKey: 1CGwW4-2ZfkErNuph3qzC1JXMYJhkJWgQqe2K4h2gD-o
     Google_SpreadsheetName: I2Loc Fight Party
-    Google_LastUpdatedVersion: 1698561845429
+    Google_LastUpdatedVersion: 1698992405021
     Google_Password: change_this
     GoogleUpdateFrequency: 3
     GoogleInEditorCheckFrequency: 2

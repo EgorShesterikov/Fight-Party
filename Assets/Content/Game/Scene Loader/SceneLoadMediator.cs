@@ -14,7 +14,7 @@ namespace FightParty.Game.SceneLoader
         public void GoToMainScene()
             => _simpleSceneLoader.Load(SceneID.MenuScene);
 
-        public void GoToPlayScene(LevelLoadingData levelLoadingData)
-            => _dataSceneLoader.Load(levelLoadingData, SceneID.PlayScene);
+        public void GoToPlayScene(LoadingData loadingData)
+            => _dataSceneLoader.Load(loadingData);
     }
 }

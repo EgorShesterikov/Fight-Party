@@ -1,45 +1,47 @@
-using FightParty.Save;
 using System;
 using System.IO;
 using UnityEngine;
 
-public class ProgressManager : ISave<ProgressJSON>, ILoad<ProgressJSON>
+namespace FightParty.Save
 {
-    private ProgressManagerConfig _config;
-
-    public ProgressManager(ProgressManagerConfig config)
-        => _config = config;
-
-    public void Save(ProgressJSON info)
+    public class ProgressManager : ISave<ProgressJSON>, ILoad<ProgressJSON>
     {
-        string json = JsonUtility.ToJson(info);
+        private ProgressManagerConfig _config;
 
-        try
+        public ProgressManager(ProgressManagerConfig config)
+            => _config = config;
+
+        public void Save(ProgressJSON info)
         {
-            File.WriteAllText(_config.SavePatch, json);
+            string json = JsonUtility.ToJson(info);
+
+            try
+            {
+                File.WriteAllText(_config.SavePatch, json);
+            }
+            catch (Exception e)
+            {
+                Debug.Log($"Warrning: {e}");
+            }
         }
-        catch (Exception e)
+
+        public ProgressJSON Load()
         {
-            Debug.Log($"Warrning: {e}");
-        }
-    }
+            if (!File.Exists(_config.SavePatch))
+                return new ProgressJSON(_config.DefaultBattleRating, _config.DefaultSurvivalTime, _config.DefaultRingIndex);
 
-    public ProgressJSON Load()
-    {
-        if (!File.Exists(_config.SavePatch))
-            return new ProgressJSON(_config.DefaultBattleRating, _config.DefaultSurvivalTime, _config.DefaultRingIndex);
+            try
+            {
+                string json = File.ReadAllText(_config.SavePatch);
 
-        try
-        {
-            string json = File.ReadAllText(_config.SavePatch);
+                return JsonUtility.FromJson<ProgressJSON>(json);
+            }
+            catch (Exception e)
+            {
+                Debug.Log($"Warrning: {e}");
 
-            return JsonUtility.FromJson<ProgressJSON>(json);
-        }
-        catch (Exception e)
-        {
-            Debug.Log($"Warrning: {e}");
-
-            return new ProgressJSON();
+                return new ProgressJSON();
+            }
         }
     }
 }

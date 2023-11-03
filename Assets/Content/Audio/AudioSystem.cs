@@ -34,7 +34,7 @@ namespace FightParty.Audio
                 changer.ChangedSound += ChangeVolumeSFX;
             }
 
-            _audioMixer = Resources.Load<AudioMixer>(Path.Combine(PathFolderAudioMixer, PathNameAudioMixer));
+            Load();
         }
 
         public void Dispose()
@@ -61,5 +61,8 @@ namespace FightParty.Audio
 
             _audioMixer.SetFloat(AudioMixerSFXVolume, (float)(Math.Log10(volume) * ChangeVolumeMultiplicator));
         }
+
+        private void Load()
+            => _audioMixer = Resources.Load<AudioMixer>(Path.Combine(PathFolderAudioMixer, PathNameAudioMixer));
     }
 }

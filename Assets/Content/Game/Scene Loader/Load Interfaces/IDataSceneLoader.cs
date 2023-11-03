@@ -2,6 +2,6 @@
 {
     public interface IDataSceneLoader
     {
-        void Load(LevelLoadingData levelLoadingData, SceneID sceneID);
+        void Load(LoadingData levelLoadingData);
     }
 }

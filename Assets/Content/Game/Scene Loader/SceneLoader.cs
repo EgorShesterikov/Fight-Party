@@ -1,3 +1,4 @@
+using FightParty.Installers;
 using System;
 
 namespace FightParty.Game.SceneLoader
@@ -17,12 +18,12 @@ namespace FightParty.Game.SceneLoader
             _zenjectSceneLoader.Load(null, (int)sceneID);
         }
 
-        public void Load(LevelLoadingData levelLoadingData, SceneID sceneID)
+        public void Load(LoadingData loadingData)
         {
             _zenjectSceneLoader.Load(container =>
             {
-                container.BindInstance(levelLoadingData);
-            }, (int)sceneID);
+                container.BindInstance(loadingData).WhenInjectedInto<PlaySceneInstaller>();
+            }, (int)SceneID.PlayScene);
         }
     }
 }
