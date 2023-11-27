@@ -13,7 +13,7 @@ namespace FightParty.Game
             => _ballFactory = ballFactory;
 
         public void SpawnDefaultBallInCenter()
-            => _ballFactory.Get(BallTypes.Default, Vector3.zero);
+            => _ballFactory.Get(BallTypes.Default, Vector3.up);
 
         public void SpawnDestroyBallInSky()
             => _ballFactory.Get(BallTypes.Destroy, new Vector3(RandomPosInRing(), MaxSkyHeight, RandomPosInRing()));

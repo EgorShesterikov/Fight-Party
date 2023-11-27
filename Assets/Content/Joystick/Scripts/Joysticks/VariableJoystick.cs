@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(CanvasGroup))]
 public class VariableJoystick : Joystick
 {
     public float MoveThreshold { get { return moveThreshold; } set { moveThreshold = Mathf.Abs(value); } }
@@ -27,6 +26,7 @@ public class VariableJoystick : Joystick
     protected override void Start()
     {
         base.Start();
+
         fixedPosition = background.anchoredPosition;
         SetMode(joystickType);
     }

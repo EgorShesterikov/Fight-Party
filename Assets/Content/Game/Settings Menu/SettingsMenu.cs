@@ -37,7 +37,7 @@ namespace FightParty.Game
             _settingsManager = settingsManager;
         }
 
-        public SettingsMenuView View => _view;
+        public IOpenClose View => _view;
 
         public void Dispose()
         {

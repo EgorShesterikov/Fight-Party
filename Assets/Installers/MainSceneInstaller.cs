@@ -11,11 +11,16 @@ namespace FightParty.Installers
         [SerializeField] private PlayMenuView _playMenuView;
         [SerializeField] private CollectionMenuView _collectionMenuView;
 
+        [Space]
+        [SerializeField] private SkinChangerConfig _skinChangerConfig;
+
         public override void InstallBindings()
         {
             BindUIInterfaces();
 
             BindGameModeFactory();
+
+            BindSkinChager();
         }
 
         private void BindUIInterfaces()
@@ -33,5 +38,12 @@ namespace FightParty.Installers
 
         private void BindGameModeFactory()
             => Container.Bind<GameModeFactory>().FromNew().AsSingle();
+
+        private void BindSkinChager()
+        {
+            Container.BindInstance(_skinChangerConfig).AsSingle();
+
+            Container.BindInterfacesAndSelfTo<SkinChanger>().FromNew().AsSingle();
+        }
     }
 }

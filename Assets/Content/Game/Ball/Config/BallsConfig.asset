@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35f701c51213d04d9c94c81bde0acc6, type: 3}
   m_Name: BallsConfig
   m_EditorClassIdentifier: 
-  _defaultBall: {fileID: 729970038281818051, guid: b803cf99006e7f54db67d921758fa785,
+  _defaultBall: {fileID: 2911647157787324288, guid: 9f5a537d5ac6b5846ac6d005d626578a,
     type: 3}
-  _destroyBall: {fileID: 8691582928484629598, guid: 270ed0a7cabb1004497510584433ce0e,
+  _destroyBall: {fileID: -7324666297783938270, guid: a96e891ed4a43a94b91e7155b6966fb3,
     type: 3}

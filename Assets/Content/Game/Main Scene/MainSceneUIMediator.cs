@@ -54,12 +54,12 @@ namespace FightParty.Game.MainScene
         private void OpenCollectionMenu()
         {
             _mainMenu.View.Close();
-            _timer.Play(SwitchingInterfacesDelay, _collectionMenu.View.Open);
+            Timer.Play(SwitchingInterfacesDelay, _collectionMenu.View.Open);
         }
         private void OpenPlayMenu()
         {
             _mainMenu.View.Close();
-            _timer.Play(SwitchingInterfacesDelay, _playMenu.View.Open);
+            Timer.Play(SwitchingInterfacesDelay, _playMenu.View.Open);
         }
         private void OpenSettingsMenu()
         {
@@ -68,30 +68,30 @@ namespace FightParty.Game.MainScene
 
         private void StartBattleMode()
         {
-            _sceenFader.Set(ScreenFader.TypeFade.Appear, () =>
+            SceenFader.Set(ScreenFader.TypeFade.Appear, () =>
             {
-                _sceneLoader.GoToPlayScene(new LoadingData(_gameModeFactory.Get(GameTypes.Battle)));
-                _sceenFader.Set(ScreenFader.TypeFade.Disappear);
+                SceneLoader.GoToPlayScene(new LoadingData(_gameModeFactory.Get(GameTypes.Battle)));
+                SceenFader.Set(ScreenFader.TypeFade.Disappear);
             });
         }
         private void ClosePlayMenu()
         {
             _playMenu.View.Close();
-            _timer.Play(SwitchingInterfacesDelay, _mainMenu.View.Open);
+            Timer.Play(SwitchingInterfacesDelay, _mainMenu.View.Open);
         }
         private void StartSurvivalMode()
         {
-            _sceenFader.Set(ScreenFader.TypeFade.Appear, () =>
+            SceenFader.Set(ScreenFader.TypeFade.Appear, () =>
             {
-                _sceneLoader.GoToPlayScene(new LoadingData(_gameModeFactory.Get(GameTypes.Survival)));
-                _sceenFader.Set(ScreenFader.TypeFade.Disappear);
+                SceneLoader.GoToPlayScene(new LoadingData(_gameModeFactory.Get(GameTypes.Survival)));
+                SceenFader.Set(ScreenFader.TypeFade.Disappear);
             }); 
         }
 
         private void CloseCollectionMenu()
         {
             _collectionMenu.View.Close();
-            _timer.Play(SwitchingInterfacesDelay, _mainMenu.View.Open);
+            Timer.Play(SwitchingInterfacesDelay, _mainMenu.View.Open);
         }
 
         private void CloseSettingsMenu()

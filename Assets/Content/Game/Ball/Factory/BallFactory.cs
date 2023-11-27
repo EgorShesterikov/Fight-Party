@@ -6,6 +6,8 @@ namespace FightParty.Game
 {
     public class BallFactory : WorldFactory
     {
+        private const float OffsetBallCentrPosition = 0.8f;
+
         private BallsConfig _config;
 
         public BallFactory(DiContainer container, BallsConfig ballsConfig) : base(container)
@@ -16,18 +18,20 @@ namespace FightParty.Game
             position.x += OffsetXPosition;
             position.y += OffsetYPosition;
 
+            position.y += OffsetBallCentrPosition;
+
             switch (type)
             {
                 case BallTypes.Default:
-                    DefaultBall defaultBall = _container.InstantiatePrefabForComponent<DefaultBall>(_config.DefaultBall,
+                    DefaultBall defaultBall = Container.InstantiatePrefabForComponent<DefaultBall>(_config.DefaultBall,
                         position, Quaternion.identity, null);
-                    _container.BindInstance(defaultBall);
+                    Container.BindInstance(defaultBall);
                     return defaultBall;
 
                 case BallTypes.Destroy:
-                    DestroyBall destroyBall = _container.InstantiatePrefabForComponent<DestroyBall>(_config.DestroyBall,
+                    DestroyBall destroyBall = Container.InstantiatePrefabForComponent<DestroyBall>(_config.DestroyBall,
                         position, Quaternion.identity, null);
-                    _container.BindInstance(destroyBall);
+                    Container.BindInstance(destroyBall);
                     return destroyBall;
 
                 default:

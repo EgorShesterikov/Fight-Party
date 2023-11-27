@@ -29,6 +29,8 @@ namespace FightParty.Installers
 
             BindCharacterFactory();
 
+            BindPlayWindowFactroy();
+
             BindGameMode();
         }
 
@@ -59,14 +61,17 @@ namespace FightParty.Installers
             Container.Bind<CharacterSpawner>().FromNew().AsSingle();
         }
 
+        private void BindPlayWindowFactroy()
+        {
+            Container.Bind<GameFactory>().FromNew().AsSingle();
+            Container.Bind<GameSpawner>().FromNew().AsSingle();
+        }
+
         private void BindGameMode()
         {
             Container.BindInstance(_levelLoadingData.GameMode).AsSingle();
 
-            Container.Bind<PlayWindowFactory>().FromNew().AsSingle();
-            Container.Bind<PlayWindowGenerator>().FromNew().AsSingle();
-
-            Container.BindInterfacesAndSelfTo<GameController>().FromNew().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<GameModInitializer>().FromNew().AsSingle().NonLazy();
         }
     }
 }

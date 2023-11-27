@@ -5,14 +5,14 @@ namespace FightParty.Save
     [Serializable]
     public struct ProgressJSON
     {
-        public int BattleRating;
+        public int BattleVictories;
         public int SurvivalTime;
 
         public int RingIndex;
 
-        public ProgressJSON(int battleRaing, int survivalTime, int ringIndex)
+        public ProgressJSON(int battleVictories, int survivalTime, int ringIndex)
         { 
-            BattleRating = battleRaing;
+            BattleVictories = battleVictories;
             SurvivalTime = survivalTime;
 
             RingIndex = ringIndex;

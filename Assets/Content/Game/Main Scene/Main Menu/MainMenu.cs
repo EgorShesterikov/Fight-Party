@@ -24,7 +24,7 @@ namespace FightParty.Game.MainScene
             _audio = audio;
         }
 
-        public MainMenuView View => _view;
+        public IOpenClose View => _view;
 
         public void Dispose()
         {

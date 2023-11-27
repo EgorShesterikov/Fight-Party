@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -21,6 +20,9 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         set { deadZone = Mathf.Abs(value); }
     }
 
+    public event Action OnChanged;
+    public event Action OnEndChanged;
+
     public AxisOptions AxisOptions { get { return AxisOptions; } set { axisOptions = value; } }
     public bool SnapX { get { return snapX; } set { snapX = value; } }
     public bool SnapY { get { return snapY; } set { snapY = value; } }
@@ -36,6 +38,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private RectTransform baseRect = null;
 
     private Canvas canvas;
+    private CanvasGroup _canvasGroup;
     private Camera cam;
 
     private Vector2 input = Vector2.zero;
@@ -46,6 +49,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         DeadZone = deadZone;
         baseRect = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
+        _canvasGroup = GetComponent<CanvasGroup>();
+
         if (canvas == null)
             Debug.LogError("The Joystick is not placed inside a canvas");
 
@@ -55,6 +60,22 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         handle.anchorMax = center;
         handle.pivot = center;
         handle.anchoredPosition = Vector2.zero;
+    }
+
+    public void IsInterectable(bool value)
+    {
+        if(value)
+        {
+            _canvasGroup.alpha = 1;
+            _canvasGroup.blocksRaycasts = true;
+            _canvasGroup.interactable = true;
+        }
+        else
+        {
+            _canvasGroup.alpha = 0.4f;
+            _canvasGroup.blocksRaycasts = false;
+            _canvasGroup.interactable = false;
+        }
     }
 
     public virtual void OnPointerDown(PointerEventData eventData)
@@ -74,6 +95,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         FormatInput();
         HandleInput(input.magnitude, input.normalized, radius, cam);
         handle.anchoredPosition = input * radius * handleRange;
+
+        OnChanged?.Invoke();
     }
 
     protected virtual void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam)
@@ -133,6 +156,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         input = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;
+
+        OnEndChanged?.Invoke();
     }
 
     protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)

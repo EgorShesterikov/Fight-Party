@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd42359830776c419db7954e112b236, type: 3}
+  m_Name: SkinChangerConfig
+  m_EditorClassIdentifier: 
+  _targetMaterial: {fileID: 2100000, guid: 9ffbbf9f1b3f5014881a3c374e3b5ab3, type: 2}
+  _closeTexture: {fileID: 2800000, guid: 9b50042bde344ff478715fadffad7a6a, type: 3}
+  _defaultTexture: {fileID: 2800000, guid: 01639597baeee0d48a906545f8b26192, type: 3}
+  _battleTexture: {fileID: 2800000, guid: b39b09a925b51274c84cbf881cca3c72, type: 3}
+  _survivalTexture: {fileID: 2800000, guid: d5be8cf1160c2a04080d430cb9dbae32, type: 3}

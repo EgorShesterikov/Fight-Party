@@ -1,0 +1,19 @@
+﻿namespace FightParty.Game
+{
+    public class CharacterVictory : CharacterState
+    {
+        public CharacterVictory(IStateSwitcher stateSwitcher, CharacterStateMachineData data, Character character)
+            : base(stateSwitcher, data, character)
+        {
+        }
+
+        public override void Enter()
+        {
+            Character.Animator.SetTrigger("Victory");
+        }
+
+        public override void Exit() { }
+
+        public override void Update() { }
+    }
+}

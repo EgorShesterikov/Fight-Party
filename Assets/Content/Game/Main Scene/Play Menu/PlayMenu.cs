@@ -30,7 +30,7 @@ namespace FightParty.Game.MainScene
             _progressManager = progressManager;
         }
 
-        public PlayMenuView View => _view;
+        public IOpenClose View => _view;
 
         public void Dispose()
         {
@@ -43,7 +43,7 @@ namespace FightParty.Game.MainScene
         {
             ProgressJSON progressJSON = _progressManager.Load();
 
-            _view.ChangeBattleRating(progressJSON.BattleRating);
+            _view.ChangeBattleRating(progressJSON.BattleVictories);
             _view.ChangeSurvivalTime(progressJSON.SurvivalTime);
         }
 

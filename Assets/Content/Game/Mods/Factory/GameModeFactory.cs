@@ -1,4 +1,3 @@
-using FightParty.Save;
 using System;
 using System.IO;
 using UnityEngine;
@@ -12,15 +11,10 @@ namespace FightParty.Game
         private const string PathNameBattleConfig = "BattleConfig";
         private const string PathNameSurvivalConfig = "SurvivalConfig";
 
-        private ProgressManager _progressManager;
-
-        public GameModeFactory(ProgressManager progressManager) 
-            => _progressManager = progressManager;
-
         public IGameMode<GameModeConfig> Get(GameTypes gameModeTypes)
         => gameModeTypes switch
         {
-            GameTypes.Battle => new BattleMod(_progressManager.Load().BattleRating, LoadBattleConfig()),
+            GameTypes.Battle => new BattleMod(LoadBattleConfig()),
             GameTypes.Survival => new SurvivalMod(LoadSurvivalConfig()),
             _ => throw new NotImplementedException()
         };

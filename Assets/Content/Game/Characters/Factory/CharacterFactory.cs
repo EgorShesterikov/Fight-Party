@@ -19,13 +19,13 @@ namespace FightParty.Game
             switch(characterTypes)
             {
                 case CharacterTypes.Yellow:
-                    Character yellowCharacter = _container.InstantiatePrefabForComponent<Character>(_config.YellowCharacter, position, rotation, null);
-                    _container.BindInstance(yellowCharacter);
+                    Character yellowCharacter = Container.InstantiatePrefabForComponent<Character>(_config.YellowCharacter, position, rotation, null);
+                    Container.BindInstance(yellowCharacter);
                     return yellowCharacter;
 
                 case CharacterTypes.Blue:
-                    Character blueCharacter = _container.InstantiatePrefabForComponent<Character>(_config.BlueCharacter, position, rotation, null);
-                    _container.BindInstance(blueCharacter);
+                    Character blueCharacter = Container.InstantiatePrefabForComponent<Character>(_config.BlueCharacter, position, rotation, null);
+                    Container.BindInstance(blueCharacter);
                     return blueCharacter;
 
                 default:

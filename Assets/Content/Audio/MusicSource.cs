@@ -8,19 +8,18 @@ namespace FightParty.Audio
     {
         public enum TypesMusic
         {
-            Default = 0,
-            Play,
-            Lose,
-            Win
+            None = 0,
+            Default,
+            Battle,
+            Survival
         }
 
         [SerializeField] private TypesMusic _startMusic = TypesMusic.Default;
 
         [Space]
         [SerializeField] private AudioClip _defaultMusic;
-        [SerializeField] private AudioClip _playMusic;
-        [SerializeField] private AudioClip _loseMusic;
-        [SerializeField] private AudioClip _winMusic;
+        [SerializeField] private AudioClip _battleMusic;
+        [SerializeField] private AudioClip _survivalMusic;
 
         private AudioSource _musicSource;
 
@@ -28,20 +27,19 @@ namespace FightParty.Audio
         {
             switch (typeMusic)
             {
+                case TypesMusic.None:
+                    break;
+
                 case TypesMusic.Default:
                     _musicSource.clip = _defaultMusic;
                     break;
 
-                case TypesMusic.Play:
-                    _musicSource.clip = _playMusic;
+                case TypesMusic.Battle:
+                    _musicSource.clip = _battleMusic;
                     break;
 
-                case TypesMusic.Lose:
-                    _musicSource.clip = _loseMusic;
-                    break;
-
-                case TypesMusic.Win:
-                    _musicSource.clip = _winMusic;
+                case TypesMusic.Survival:
+                    _musicSource.clip = _survivalMusic;
                     break;
 
                 default:

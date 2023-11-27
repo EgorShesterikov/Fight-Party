@@ -1,8 +1,13 @@
-﻿namespace FightParty.Game
+﻿using FightParty.Game.PlayScene;
+using FightParty.Game.PlayScene.Survival;
+
+namespace FightParty.Game
 {
     public class SurvivalMod : IGameMode<SurvivalConfig>
     {
         private SurvivalConfig _config;
+
+        private SurvivalStateMachine _stateMachine;
 
         public SurvivalMod(SurvivalConfig config)
         {
@@ -13,14 +18,17 @@
 
         public GameTypes GameType => GameTypes.Survival;
 
-        public void Initialize(BallSpawner ballGenerator, CharacterSpawner characterSpawner)
+        public StateMachine StateMachine => _stateMachine;
+
+        public void Initialize(GameSpawner playWindowSpawner, BallSpawner ballGenerator, CharacterSpawner characterSpawner)
         {
+            characterSpawner.SpawnYellowCharacterInCentr();
             characterSpawner.SpawnBlueCharacterInCentr();
+
+            playWindowSpawner.CreateSurvivalWindow();
         }
 
-        public bool IsResult()
-        {
-            return true;
-        }
+        public void BindStateMachine(StateMachine stateMachine)
+           => _stateMachine = (SurvivalStateMachine)stateMachine;
     }
 }

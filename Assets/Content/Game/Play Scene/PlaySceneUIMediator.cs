@@ -43,12 +43,10 @@ namespace FightParty.Game.PlayScene
 
         private void ExitPlayScene()
         {
-            _sceenFader.Set(ScreenFader.TypeFade.Appear, () =>
+            SceenFader.Set(ScreenFader.TypeFade.Appear, () =>
             {
-                UnityEngine.Debug.Log("Возврат в главное меню с вычетом очков");
-
-                _sceneLoader.GoToMainScene();
-                _sceenFader.Set(ScreenFader.TypeFade.Disappear);
+                SceneLoader.GoToMainScene();
+                SceenFader.Set(ScreenFader.TypeFade.Disappear);
             });
         }
         private void DontExitPlayScene()
