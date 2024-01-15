@@ -2,61 +2,61 @@
 {
     public class BattleSelection : BattleRaundState
     {
-        private ISelectJoysticks _changeJoystick;
+        private IChooserJoysticks _chooserJoystick;
         private IHidePlayerIndication _hideJoysticks;
 
-        private Character _yellowCharacter;
-        private Character _blueCharacter;
+        private Character _firstCharacter;
+        private Character _secondCharacter;
 
         public BattleSelection(IStateSwitcher stateSwitcher, BattleStateMachineData data, BattleRaundIndication raundIndication, 
-            ISelectJoysticks changeJoystick, IHidePlayerIndication hideJoysticks, Character yellowCharacter, Character blueCharacter) 
+            IChooserJoysticks chooserJoystick, IHidePlayerIndication hideJoysticks, Character firstCharacter, Character secondCharacter) 
             : base(stateSwitcher, data, raundIndication)
         {
-            _changeJoystick = changeJoystick;
+            _chooserJoystick = chooserJoystick;
             _hideJoysticks = hideJoysticks;
 
-            _yellowCharacter = yellowCharacter;
-            _blueCharacter = blueCharacter;
+            _firstCharacter = firstCharacter;
+            _secondCharacter = secondCharacter;
         }
 
         public override void Enter()
         {
             RaundIndication.SetStep(BattleRaundsStepTypes.Selection);
 
-            _changeJoystick.SelectedBlueJoystick += SetBluePlayerController;
-            _changeJoystick.SelectedYellowJoystick += SetYellowPlayerController;
+            _chooserJoystick.SelectedSecond += SetFirstPlayerController;
+            _chooserJoystick.SelectedFirst += SetSecondPlayerController;
         }
 
         public override void Update() { }
 
         public override void Exit()
         {
-            _changeJoystick.SelectedBlueJoystick -= SetBluePlayerController;
-            _changeJoystick.SelectedYellowJoystick -= SetYellowPlayerController;
+            _chooserJoystick.SelectedSecond -= SetFirstPlayerController;
+            _chooserJoystick.SelectedFirst -= SetSecondPlayerController;
         }
 
-        private void SetYellowPlayerController()
+        private void SetSecondPlayerController()
         {
-            Data.SelectCharacterPlayer = _yellowCharacter;
+            Data.SelectCharacterPlayer = _firstCharacter;
             Data.SelectCharacterPlayer.SetPlayerController();
 
-            Data.SelectCharacterEnemy = _blueCharacter;
+            Data.SelectCharacterEnemy = _secondCharacter;
             Data.SelectCharacterEnemy.SetAutoController(Data.SelectCharacterPlayer, Data.DefaultBall);
 
-            _hideJoysticks.SetActivBlueJoystic(false);
+            _hideJoysticks.SetActivSecondJoystick(false);
 
             StateSwitcher.SwitchState<BattlePreparation>();
         }
 
-        private void SetBluePlayerController()
+        private void SetFirstPlayerController()
         {
-            Data.SelectCharacterPlayer = _blueCharacter;
+            Data.SelectCharacterPlayer = _secondCharacter;
             Data.SelectCharacterPlayer.SetPlayerController();
 
-            Data.SelectCharacterEnemy = _yellowCharacter;
+            Data.SelectCharacterEnemy = _firstCharacter;
             Data.SelectCharacterEnemy.SetAutoController(Data.SelectCharacterPlayer, Data.DefaultBall);
 
-            _hideJoysticks.SetActivYellowJoystic(false);
+            _hideJoysticks.SetActivFirstJoystick(false);
 
             StateSwitcher.SwitchState<BattlePreparation>();
         }

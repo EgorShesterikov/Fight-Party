@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3374908060125025680}
   m_Layer: 0
-  m_Name: Yellow
+  m_Name: First
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,7 +233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1944045084551931694}
   m_Layer: 0
-  m_Name: Blue
+  m_Name: Second
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -392,15 +392,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startAnimation: 1
-  _yellowIndication: {fileID: 494563438366701335}
-  _blueIndication: {fileID: 862124215040405898}
-  _yellowJoystick: {fileID: 4899607848750878185}
-  _blueJoystick: {fileID: 7691435097864998276}
-  _yellowHeals:
+  _firstIndication: {fileID: 494563438366701335}
+  _secondIndication: {fileID: 862124215040405898}
+  _firstJoystick: {fileID: 4899607848750878185}
+  _secondJoystick: {fileID: 7691435097864998276}
+  _firstHeals:
   - {fileID: 3547523646330169143}
   - {fileID: 7950081997479102014}
   - {fileID: 9068154527344399118}
-  _blueHeals:
+  _secondHeals:
   - {fileID: 8215247976305266882}
   - {fileID: 761131467274900633}
   - {fileID: 136179775044287348}

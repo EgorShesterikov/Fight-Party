@@ -11,17 +11,17 @@ namespace FightParty.Game.PlayScene.Survival
 
         private float _currentSpawnDestroyBallRechargeTime;
 
-        private IChangeJoystick _changeJoystick;
+        private IReaderJoystick _readerJoystick;
         private SurvivalTimeIndication _timeIndication;
         private BallSpawner _ballSpawner;
         private IHidePlayerIndication _hidePlayerIndication;
 
         public SurvivalProcess(IStateSwitcher stateSwitcher, SurvivalStateMachineData data,
-            IChangeJoystick changeJoystick, SurvivalTimeIndication timeIndication, BallSpawner ballSpawner, 
+            IReaderJoystick readerJoystick, SurvivalTimeIndication timeIndication, BallSpawner ballSpawner, 
             IHidePlayerIndication hidePlayerIndication) 
             : base(stateSwitcher, data)
         {
-            _changeJoystick = changeJoystick;
+            _readerJoystick = readerJoystick;
             _timeIndication = timeIndication;
             _ballSpawner = ballSpawner;
             _hidePlayerIndication = hidePlayerIndication;
@@ -29,7 +29,7 @@ namespace FightParty.Game.PlayScene.Survival
 
         public override void Enter()
         {
-            _changeJoystick.EndChangedJoystick += StartJumpCharacter;
+            _readerJoystick.EndChangedPosition += StartJumpCharacter;
 
             Data.SelectCharacterPlayer.BallTriggered += TakeDamageCharacter;
 
@@ -39,7 +39,7 @@ namespace FightParty.Game.PlayScene.Survival
 
         public override void Exit()
         {
-            _changeJoystick.EndChangedJoystick -= StartJumpCharacter;
+            _readerJoystick.EndChangedPosition -= StartJumpCharacter;
 
             Data.SelectCharacterPlayer.BallTriggered -= TakeDamageCharacter;
         }
@@ -97,10 +97,10 @@ namespace FightParty.Game.PlayScene.Survival
 
         private void ChangeInteractableJoystick(bool value)
         {
-            if(Data.SelectCharacterPlayer.Type == CharacterTypes.Yellow)
-                _hidePlayerIndication.SetIneterctableYellowJoystick(value);
+            if(Data.SelectCharacterPlayer.Type == CharacterTypes.First)
+                _hidePlayerIndication.SetIneterctableFirstJoystick(value);
             else
-                _hidePlayerIndication.SetIneterctableBlueJoystick(value);
+                _hidePlayerIndication.SetIneterctableSecondJoystick(value);
         }
 
         private void SpawnDestroyBall()

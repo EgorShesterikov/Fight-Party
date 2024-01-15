@@ -32,7 +32,7 @@ namespace FightParty.Game
         private Animator _animator;
         private AudioComponent _audio;
 
-        public void Initialized(IChangeJoystick changeJoystick)
+        public void Initialized(IReaderJoystick changeJoystick)
         {
             _stateMachine = new CharacterStateMachine(this, changeJoystick);
         }

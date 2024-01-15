@@ -1,34 +1,25 @@
 ﻿using FightParty.Game.PlayScene;
-using FightParty.Game.PlayScene.Battle;
 
 namespace FightParty.Game
 {
-    public class BattleMod : IGameMode<BattleConfig>
+    public class BattleMod : IGameMode
     {
-        private BattleConfig _config;
-
-        private BattleStateMachine _stateMachine;
-
-        public BattleMod(BattleConfig config)
-            => _config = config;
-
-        public BattleConfig Config => _config;
-
-        public GameTypes GameType => GameTypes.Battle;
-
-        public StateMachine StateMachine => _stateMachine;
+        private StateMachine _stateMachine;
 
         public void Initialize(GameSpawner playWindowSpawner, BallSpawner ballSpawner, CharacterSpawner characterSpawner)
         {
             ballSpawner.SpawnDefaultBallInCenter();
 
-            characterSpawner.SpawnYellowCharacterInLeftCorner();
-            characterSpawner.SpawnBlueCharacterInRightCorner();
+            characterSpawner.SpawnFirstCharacterInLeftCorner();
+            characterSpawner.SpawnSecondCharacterInRightCorner();
 
             playWindowSpawner.SpawnBattleWindow();
         }
 
         public void BindStateMachine(StateMachine stateMachine)
-            => _stateMachine = (BattleStateMachine)stateMachine;
+            => _stateMachine = stateMachine;
+
+        public void Update()
+            => _stateMachine?.Tick();
     }
 }

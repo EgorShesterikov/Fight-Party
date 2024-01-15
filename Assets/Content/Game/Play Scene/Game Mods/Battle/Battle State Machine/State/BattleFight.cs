@@ -52,8 +52,8 @@ namespace FightParty.Game.PlayScene.Battle
 
         private void ChangeInteractableJoystick(bool value)
         {
-            _playerIndication.SetIneterctableYellowJoystick(value);
-            _playerIndication.SetIneterctableBlueJoystick(value);
+            _playerIndication.SetIneterctableFirstJoystick(value);
+            _playerIndication.SetIneterctableSecondJoystick(value);
         }
     }
 }

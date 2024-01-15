@@ -16,19 +16,19 @@ namespace FightParty.Game
         private Vector3 RightCentrPosition => new Vector3(1, 0, 0);
 
         private Quaternion AngleTowardsCamera => Quaternion.Euler(0, 180, 0);
-        private Quaternion AngleTowardsInCentrYellow => Quaternion.Euler(0, 135, 0);
-        private Quaternion AngleTowardsInCentrBlue => Quaternion.Euler(0, -35, 0);
+        private Quaternion AngleTowardsInCentrFirst => Quaternion.Euler(0, 135, 0);
+        private Quaternion AngleTowardsInCentrSecond => Quaternion.Euler(0, -35, 0);
 
-        public void SpawnYellowCharacterInCentr()
-            => _factory.Get(CharacterTypes.Yellow, LeftCentrPosition, AngleTowardsCamera);
+        public void SpawnFirstCharacterInCentr()
+            => _factory.Get(CharacterTypes.First, LeftCentrPosition, AngleTowardsCamera);
 
-        public void SpawnBlueCharacterInCentr()
-            => _factory.Get(CharacterTypes.Blue, RightCentrPosition, AngleTowardsCamera);
+        public void SpawnSecondCharacterInCentr()
+            => _factory.Get(CharacterTypes.Second, RightCentrPosition, AngleTowardsCamera);
 
-        public void SpawnYellowCharacterInLeftCorner()
-            => _factory.Get(CharacterTypes.Yellow, LeftCornerPosition, AngleTowardsInCentrYellow);
+        public void SpawnFirstCharacterInLeftCorner()
+            => _factory.Get(CharacterTypes.First, LeftCornerPosition, AngleTowardsInCentrFirst);
 
-        public void SpawnBlueCharacterInRightCorner()
-            => _factory.Get(CharacterTypes.Blue, RightCornerPosition, AngleTowardsInCentrBlue);
+        public void SpawnSecondCharacterInRightCorner()
+            => _factory.Get(CharacterTypes.Second, RightCornerPosition, AngleTowardsInCentrSecond);
     }
 }

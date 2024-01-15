@@ -2,7 +2,7 @@
 {
     public enum CharacterTypes
     { 
-        Yellow = 0,
-        Blue
+        First = 0,
+        Second
     }
 }

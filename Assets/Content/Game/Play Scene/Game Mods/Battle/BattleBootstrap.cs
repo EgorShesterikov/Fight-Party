@@ -13,68 +13,45 @@ namespace FightParty.Game.PlayScene.Battle
         [SerializeField] private BattleReadyButtonView _readyButtonView;
         [SerializeField] private BattleResultMenuView _resultMenuView;
 
-        private IGameMode<GameModeConfig> _gameMode;
-
-        private MusicSource _musicSource;
-
-        private GlobalSFXSource _globalSFXSource;
-
         private BattleResultUIMediator _resultUIMediator;
-
-        private ProgressManager _progressManager;
-
-        private List<Character> _characters;
 
         private DefaultBall _ball;
 
         [Inject]
-        public void Construct(IGameMode<GameModeConfig> gameMode, MusicSource musicSource, GlobalSFXSource globalSFXSource, 
+        public void Construct(IGameMode gameMode, MusicSource musicSource, GlobalSFXSource globalSFXSource, 
             BattleResultUIMediator resultUIMediator, ProgressManager progressManager,
             List<Character> characters, DefaultBall defaultBall)
         {
-            _gameMode = gameMode;
-
-            _musicSource = musicSource;
-
-            _globalSFXSource = globalSFXSource;
-
             _resultUIMediator = resultUIMediator;
-
-            _progressManager = progressManager;
-
-            _characters = characters;
 
             _ball = defaultBall;
         }
 
         protected override void Binding()
         {
-            Character yellowCharacter = _characters.Find((character) => character.Type == CharacterTypes.Yellow);
-            Character blueCharacter = _characters.Find((character) => character.Type == CharacterTypes.Blue);
+            Character firstCharacter = Characters.Find((character) => character.Type == CharacterTypes.First);
+            Character secondCharacter = Characters.Find((character) => character.Type == CharacterTypes.Second);
 
             BattleRaundIndication raundIndication = new BattleRaundIndication(_raundIndicationView);
 
-            PlayerIndication playerIndication = new PlayerIndication(_playerIndicationView, yellowCharacter, blueCharacter);
+            PlayerIndication playerIndication = new PlayerIndication(_playerIndicationView, firstCharacter, secondCharacter);
 
-            BattleReadyButton readyButton = new BattleReadyButton(_readyButtonView, _globalSFXSource);
+            BattleReadyButton readyButton = new BattleReadyButton(_readyButtonView, GlobalSFXSource);
 
-            BattleResultMenu resultMenu = new BattleResultMenu(_resultMenuView, _globalSFXSource, _progressManager);
+            BattleResultMenu resultMenu = new BattleResultMenu(_resultMenuView, GlobalSFXSource, ProgressManager);
 
             _resultUIMediator.Initialize(resultMenu);
 
-            foreach (Character character in _characters)
+            foreach (Character character in Characters)
                 character.Initialized(playerIndication);
 
             BattleStateMachine battleStateMachine = new BattleStateMachine
-                (raundIndication, playerIndication, readyButton, resultMenu, yellowCharacter, blueCharacter, _ball);
+                (raundIndication, playerIndication, readyButton, resultMenu, firstCharacter, secondCharacter, _ball);
 
-            _gameMode.BindStateMachine(battleStateMachine);
+            GameMode.BindStateMachine(battleStateMachine);
         }
 
         private void Start()
-            => _musicSource.PlayMusic(MusicSource.TypesMusic.Battle);
-
-        private void Update()
-            => _gameMode.StateMachine.Tick();
+            => MusicSource.PlayMusic(MusicSource.TypesMusic.Battle);
     }
 }

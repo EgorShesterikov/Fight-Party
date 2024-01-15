@@ -18,15 +18,15 @@ namespace FightParty.Game
 
             switch(characterTypes)
             {
-                case CharacterTypes.Yellow:
-                    Character yellowCharacter = Container.InstantiatePrefabForComponent<Character>(_config.YellowCharacter, position, rotation, null);
-                    Container.BindInstance(yellowCharacter);
-                    return yellowCharacter;
+                case CharacterTypes.First:
+                    Character firstCharacter = Container.InstantiatePrefabForComponent<Character>(_config.FirstCharacter, position, rotation, null);
+                    Container.BindInstance(firstCharacter);
+                    return firstCharacter;
 
-                case CharacterTypes.Blue:
-                    Character blueCharacter = Container.InstantiatePrefabForComponent<Character>(_config.BlueCharacter, position, rotation, null);
-                    Container.BindInstance(blueCharacter);
-                    return blueCharacter;
+                case CharacterTypes.Second:
+                    Character secondCharacter = Container.InstantiatePrefabForComponent<Character>(_config.SecondCharacter, position, rotation, null);
+                    Container.BindInstance(secondCharacter);
+                    return secondCharacter;
 
                 default:
                     throw new NotImplementedException();

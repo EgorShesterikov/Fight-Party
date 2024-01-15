@@ -10,13 +10,13 @@ namespace FightParty.Game
         private const int ChanceTargetBallJump = ChanceTargetPlayerJump + 20;
         private const int ChancePerfectJump = ChanceTargetBallJump + 40;
 
-        private IChangeJoystick _changeJoystick;
+        private IReaderJoystick _readerJoystick;
 
         public CharacterPreparation(IStateSwitcher stateSwitcher, CharacterStateMachineData data, Character character, 
-            IChangeJoystick changeJoystick) 
+            IReaderJoystick readerJoystick) 
             : base(stateSwitcher, data, character)
         {
-            _changeJoystick = changeJoystick;
+            _readerJoystick = readerJoystick;
         }
 
         public override void Enter()
@@ -31,7 +31,7 @@ namespace FightParty.Game
             if (Character.IsPlayerController)
             {
                 Character.JumpDirection.gameObject.SetActive(true);
-                _changeJoystick.ChangedJoystick += SetJumpDirection;
+                _readerJoystick.ChangedPosition += SetJumpDirection;
             }
             else
                 SetAutoJumpDirection();
@@ -45,7 +45,7 @@ namespace FightParty.Game
             if (Character.IsPlayerController)
             {
                 Character.JumpDirection.gameObject.SetActive(false);
-                _changeJoystick.ChangedJoystick -= SetJumpDirection;
+                _readerJoystick.ChangedPosition -= SetJumpDirection;
             }
         }
 

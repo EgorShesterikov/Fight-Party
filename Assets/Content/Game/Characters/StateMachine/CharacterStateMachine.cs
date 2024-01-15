@@ -8,15 +8,15 @@ namespace FightParty.Game
         private CharacterStateMachineData _data;
 
         private Character _character;
-        private IChangeJoystick _changeJoystick;
+        private IReaderJoystick _readerJoystick;
 
-        public CharacterStateMachine(Character character, IChangeJoystick changeJoystick) 
+        public CharacterStateMachine(Character character, IReaderJoystick readerJoystick) 
         {
             _data = new CharacterStateMachineData();
 
             _character = character;
 
-            _changeJoystick = changeJoystick;
+            _readerJoystick = readerJoystick;
 
             Init();
         }
@@ -25,7 +25,7 @@ namespace FightParty.Game
             => new List<IState>()
             {
                 new CharacterStay(this, _data, _character),
-                new CharacterPreparation(this, _data, _character, _changeJoystick),
+                new CharacterPreparation(this, _data, _character, _readerJoystick),
                 new CharacterJump(this, _data, _character),
                 new CharacterDamage(this, _data, _character),
                 new CharacterDead(this, _data, _character),

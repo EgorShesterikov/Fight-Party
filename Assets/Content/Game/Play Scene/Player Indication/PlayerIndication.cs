@@ -3,102 +3,102 @@ using UnityEngine;
 
 namespace FightParty.Game.PlayScene
 {
-    public class PlayerIndication : IDisposable, ISelectJoysticks, IChangeJoystick
+    public class PlayerIndication : IDisposable, IChooserJoysticks, IReaderJoystick
     {
-        public event Action SelectedYellowJoystick;
-        public event Action SelectedBlueJoystick;
+        public event Action SelectedFirst;
+        public event Action SelectedSecond;
 
-        public event Action<Vector2> ChangedJoystick;
-        public event Action EndChangedJoystick;
+        public event Action<Vector2> ChangedPosition;
+        public event Action EndChangedPosition;
 
         private VariableJoystick _selectJoystick;
 
         private PlayerIndicationView _view;
 
-        private ITriggerBall _yellowCharacter;
-        private ITriggerBall _blueCharacter;
+        private ITriggerBall _firstCharacter;
+        private ITriggerBall _secondCharacter;
 
-        private int _currentHealYellow = 3;
-        private int _currentHealBlue = 3;
+        private int _currentHealFirstCharacter = 3;
+        private int _currentHealSecondCharacter = 3;
 
-        public PlayerIndication(PlayerIndicationView view, ITriggerBall yellowCharacter, ITriggerBall blueCharacter)
+        public PlayerIndication(PlayerIndicationView view, ITriggerBall firstCharacter, ITriggerBall secondCharacter)
         {
             _view = view;
 
-            _view.YellowJoystick.OnChanged += SelectYellowJoystick;
-            _view.BlueJoystick.OnChanged += SelectBlueJoystick;
+            _view.FirstJoystick.OnChanged += SelectFirstJoystick;
+            _view.SecondJoystick.OnChanged += SelectSecondJoystick;
 
-            _view.YellowJoystick.OnEndChanged += EndChangeJoystick;
-            _view.BlueJoystick.OnEndChanged += EndChangeJoystick;
+            _view.FirstJoystick.OnEndChanged += EndChangeJoystick;
+            _view.SecondJoystick.OnEndChanged += EndChangeJoystick;
 
-            _yellowCharacter = yellowCharacter;
-            _blueCharacter = blueCharacter;
+            _firstCharacter = firstCharacter;
+            _secondCharacter = secondCharacter;
 
-            _yellowCharacter.BallTriggered += TakeDamageYellow;
-            _blueCharacter.BallTriggered += TakeDamageBlue;
+            _firstCharacter.BallTriggered += TakeDamageFirst;
+            _secondCharacter.BallTriggered += TakeDamageSecond;
         }
 
         public IHidePlayerIndication View => _view;
 
         public void Dispose()
         {
-            _view.YellowJoystick.OnChanged -= SelectYellowJoystick;
-            _view.BlueJoystick.OnChanged -= SelectBlueJoystick;
+            _view.FirstJoystick.OnChanged -= SelectFirstJoystick;
+            _view.SecondJoystick.OnChanged -= SelectSecondJoystick;
 
-            _view.YellowJoystick.OnEndChanged -= EndChangeJoystick;
-            _view.BlueJoystick.OnEndChanged -= EndChangeJoystick;
+            _view.FirstJoystick.OnEndChanged -= EndChangeJoystick;
+            _view.SecondJoystick.OnEndChanged -= EndChangeJoystick;
 
-            _view.YellowJoystick.OnChanged -= ChangeJoystick;
-            _view.BlueJoystick.OnChanged -= ChangeJoystick;
+            _view.FirstJoystick.OnChanged -= ChangeJoystick;
+            _view.SecondJoystick.OnChanged -= ChangeJoystick;
 
-            _yellowCharacter.BallTriggered -= TakeDamageYellow;
-            _blueCharacter.BallTriggered -= TakeDamageBlue;
+            _firstCharacter.BallTriggered -= TakeDamageFirst;
+            _secondCharacter.BallTriggered -= TakeDamageSecond;
         }
 
-        private void SelectYellowJoystick()
+        private void SelectFirstJoystick()
         {
-            SelectedYellowJoystick?.Invoke();
+            SelectedFirst?.Invoke();
 
-            _view.YellowJoystick.OnChanged += ChangeJoystick;
+            _view.FirstJoystick.OnChanged += ChangeJoystick;
 
-            _selectJoystick = _view.YellowJoystick;
+            _selectJoystick = _view.FirstJoystick;
         }
-        private void SelectBlueJoystick()
+        private void SelectSecondJoystick()
         {
-            SelectedBlueJoystick?.Invoke();
+            SelectedSecond?.Invoke();
 
-            _view.BlueJoystick.OnChanged += ChangeJoystick;
+            _view.SecondJoystick.OnChanged += ChangeJoystick;
 
-            _selectJoystick = _view.BlueJoystick;
+            _selectJoystick = _view.SecondJoystick;
         }
 
         private void ChangeJoystick()
         {
             if(_selectJoystick != null)
-                ChangedJoystick?.Invoke(_selectJoystick.Direction);
+                ChangedPosition?.Invoke(_selectJoystick.Direction);
         }
 
         private void EndChangeJoystick()
         {
             if (_selectJoystick != null)
-                EndChangedJoystick?.Invoke();
+                EndChangedPosition?.Invoke();
         }
 
-        private void TakeDamageYellow()
+        private void TakeDamageFirst()
         {
-            if (_currentHealYellow <= 0)
+            if (_currentHealFirstCharacter <= 0)
                 return;
 
-            _currentHealYellow--;
-            _view.ChangeHealYellow(_currentHealYellow);
+            _currentHealFirstCharacter--;
+            _view.ChangeHealFirst(_currentHealFirstCharacter);
         }
-        private void TakeDamageBlue()
+        private void TakeDamageSecond()
         {
-            if (_currentHealBlue <= 0)
+            if (_currentHealSecondCharacter <= 0)
                 return;
 
-            _currentHealBlue--;
-            _view.ChangeHealBlue(_currentHealBlue);
+            _currentHealSecondCharacter--;
+            _view.ChangeHealSecond(_currentHealSecondCharacter);
         }
     }
 }

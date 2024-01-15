@@ -2,11 +2,11 @@
 {
     public class LoadingData
     { 
-        private IGameMode<GameModeConfig> _gameMode;
+        private IGameMode _gameMode;
 
-        public LoadingData(IGameMode<GameModeConfig> gameMode)
+        public LoadingData(IGameMode gameMode)
             => _gameMode = gameMode;
 
-        public IGameMode<GameModeConfig> GameMode => _gameMode;
+        public IGameMode GameMode => _gameMode;
     }
 }

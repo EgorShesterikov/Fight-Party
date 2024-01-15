@@ -5,40 +5,40 @@ namespace FightParty.Game.PlayScene
 {
     public class PlayerIndicationView : WindowBase, IHidePlayerIndication
     {
-        [SerializeField] private GameObject _yellowIndication;
-        [SerializeField] private GameObject _blueIndication;
+        [SerializeField] private GameObject _firstIndication;
+        [SerializeField] private GameObject _secondIndication;
 
         [Space]
-        [SerializeField] private VariableJoystick _yellowJoystick;
-        [SerializeField] private VariableJoystick _blueJoystick;
+        [SerializeField] private VariableJoystick _firstJoystick;
+        [SerializeField] private VariableJoystick _secondJoystick;
 
         [Space]
-        [SerializeField] private List<GameObject> _yellowHeals;
-        [SerializeField] private List<GameObject> _blueHeals;
+        [SerializeField] private List<GameObject> _firstHeals;
+        [SerializeField] private List<GameObject> _secondHeals;
 
-        public VariableJoystick YellowJoystick => _yellowJoystick;
-        public VariableJoystick BlueJoystick => _blueJoystick;
+        public VariableJoystick FirstJoystick => _firstJoystick;
+        public VariableJoystick SecondJoystick => _secondJoystick;
 
-        public void SetActivYellowJoystic(bool value)
-            => _yellowJoystick.gameObject.SetActive(value);
-        public void SetActivBlueJoystic(bool value)
-            => _blueJoystick.gameObject.SetActive(value);
+        public void SetActivFirstJoystick(bool value)
+            => _firstJoystick.gameObject.SetActive(value);
+        public void SetActivSecondJoystick(bool value)
+            => _secondJoystick.gameObject.SetActive(value);
 
-        public void ChangeHealYellow(int value)
-            => _yellowHeals[value].gameObject.SetActive(false);
-        public void ChangeHealBlue(int value)
-            => _blueHeals[value].gameObject.SetActive(false);
+        public void ChangeHealFirst(int value)
+            => _firstHeals[value].gameObject.SetActive(false);
+        public void ChangeHealSecond(int value)
+            => _secondHeals[value].gameObject.SetActive(false);
 
-        public void SetActivYellowIndication(bool value)
-            => _yellowIndication.SetActive(value);
+        public void SetActivFirstIndication(bool value)
+            => _firstIndication.SetActive(value);
 
-        public void SetActivBlueIndication(bool value)
-            => _blueIndication.SetActive(value);
+        public void SetActivSecondIndication(bool value)
+            => _secondIndication.SetActive(value);
 
-        public void SetIneterctableYellowJoystick(bool value)
-            => _yellowJoystick.IsInterectable(value);
+        public void SetIneterctableFirstJoystick(bool value)
+            => _firstJoystick.IsInterectable(value);
 
-        public void SetIneterctableBlueJoystick(bool value)
-            => _blueJoystick.IsInterectable(value);
+        public void SetIneterctableSecondJoystick(bool value)
+            => _secondJoystick.IsInterectable(value);
     }
 }

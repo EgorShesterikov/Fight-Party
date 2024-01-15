@@ -20,7 +20,9 @@ namespace FightParty.Game
 
         public void Set(TypeFade typeFade, Action callBack = null, bool isUnscaledTime = false)
         {
-            if (_coroutine != null) StopCoroutine(_coroutine);
+            if (_coroutine != null) 
+                StopCoroutine(_coroutine);
+
             _coroutine = StartCoroutine(FadeProcess(typeFade, callBack, isUnscaledTime));
         }
 

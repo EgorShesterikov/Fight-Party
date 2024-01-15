@@ -12,33 +12,33 @@ namespace FightParty.Game.PlayScene.Battle
 
         public Action<Vector2> _playerInput;
 
-        private int _yellowHeal = 3;
-        private int _blueHeal = 3;
+        private int _firstHeal = 3;
+        private int _secondHeal = 3;
 
         public BattleStateMachineData(DefaultBall defaultBall)
             => DefaultBall = defaultBall;
 
-        public int YellowHeal
+        public int FirstHeal
         {
-            get => _yellowHeal;
+            get => _firstHeal;
             set
             {
                 if (value < 0 || value > 3)
                     throw new ArgumentOutOfRangeException(nameof(value));
 
-                _yellowHeal = value;
+                _firstHeal = value;
             }
         }
 
-        public int BlueHeal
+        public int SecondHeal
         {
-            get => _blueHeal;
+            get => _secondHeal;
             set
             {
                 if (value < 0 || value > 3)
                     throw new ArgumentOutOfRangeException(nameof(value));
 
-                _blueHeal = value;
+                _secondHeal = value;
             }
         }
     }

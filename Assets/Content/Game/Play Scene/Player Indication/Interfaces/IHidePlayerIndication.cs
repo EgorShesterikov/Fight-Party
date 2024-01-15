@@ -2,13 +2,13 @@
 {
     public interface IHidePlayerIndication
     {
-        void SetActivYellowJoystic(bool value);
-        void SetActivBlueJoystic(bool value);
+        void SetActivFirstJoystick(bool value);
+        void SetActivSecondJoystick(bool value);
 
-        void SetActivYellowIndication(bool value);
-        void SetActivBlueIndication(bool value);
+        void SetActivFirstIndication(bool value);
+        void SetActivSecondIndication(bool value);
 
-        void SetIneterctableYellowJoystick(bool value);
-        void SetIneterctableBlueJoystick(bool value);
+        void SetIneterctableFirstJoystick(bool value);
+        void SetIneterctableSecondJoystick(bool value);
     }
 }

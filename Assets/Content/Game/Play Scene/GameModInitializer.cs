@@ -1,9 +1,19 @@
-﻿namespace FightParty.Game.PlayScene
+﻿using Zenject;
+
+namespace FightParty.Game.PlayScene
 {
-    public class GameModInitializer
+    public class GameModInitializer : ITickable
     {
-        public GameModInitializer(IGameMode<GameModeConfig> gameMode, GameSpawner playWindowSpawner, 
-            BallSpawner ballSpawner, CharacterSpawner characterSpawner) 
-            => gameMode.Initialize(playWindowSpawner, ballSpawner, characterSpawner);
+        private IGameMode _gameMode;
+
+        public GameModInitializer(IGameMode gameMode, GameSpawner playWindowSpawner,
+            BallSpawner ballSpawner, CharacterSpawner characterSpawner)
+        {
+            _gameMode = gameMode;
+            _gameMode.Initialize(playWindowSpawner, ballSpawner, characterSpawner);
+        }
+
+        public void Tick()
+            => _gameMode.Update();
     }
 }

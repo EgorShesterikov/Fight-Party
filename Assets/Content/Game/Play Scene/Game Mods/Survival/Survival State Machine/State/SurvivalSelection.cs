@@ -2,55 +2,55 @@ namespace FightParty.Game.PlayScene.Survival
 {
     public class SurvivalSelection : SurvivalState
     {
-        private ISelectJoysticks _changeJoystick;
+        private IChooserJoysticks _chooserJoystick;
         private IHidePlayerIndication _hideIndication;
 
-        private Character _yellowCharacter;
-        private Character _blueCharacter;
+        private Character _firstCharacter;
+        private Character _secondCharacter;
 
         public SurvivalSelection(IStateSwitcher stateSwitcher, SurvivalStateMachineData data,
-           ISelectJoysticks changeJoystick, IHidePlayerIndication hideIndication, Character yellowCharacter, Character blueCharacter)
+           IChooserJoysticks chooserJoystick, IHidePlayerIndication hideIndication, Character firstCharacter, Character secondCharacter)
            : base(stateSwitcher, data)
         {
-            _changeJoystick = changeJoystick;
+            _chooserJoystick = chooserJoystick;
             _hideIndication = hideIndication;
 
-            _yellowCharacter = yellowCharacter;
-            _blueCharacter = blueCharacter;
+            _firstCharacter = firstCharacter;
+            _secondCharacter = secondCharacter;
         }
 
         public override void Enter()
         {
-            _changeJoystick.SelectedBlueJoystick += SetBluePlayerController;
-            _changeJoystick.SelectedYellowJoystick += SetYellowPlayerController;
+            _chooserJoystick.SelectedSecond += SetSecondPlayerController;
+            _chooserJoystick.SelectedFirst += SetFirstPlayerController;
         }
 
         public override void Update() { }
 
         public override void Exit()
         {
-            _changeJoystick.SelectedBlueJoystick -= SetBluePlayerController;
-            _changeJoystick.SelectedYellowJoystick -= SetYellowPlayerController;
+            _chooserJoystick.SelectedSecond -= SetSecondPlayerController;
+            _chooserJoystick.SelectedFirst -= SetFirstPlayerController;
         }
 
-        private void SetYellowPlayerController()
+        private void SetFirstPlayerController()
         {
-            Data.SelectCharacterPlayer = _yellowCharacter;
+            Data.SelectCharacterPlayer = _firstCharacter;
             Data.SelectCharacterPlayer.SetPlayerController();
 
-            _hideIndication.SetActivBlueIndication(false);
-            _blueCharacter.Destroy();
+            _hideIndication.SetActivSecondIndication(false);
+            _secondCharacter.Destroy();
 
             StateSwitcher.SwitchState<SurvivalProcess>();
         }
 
-        private void SetBluePlayerController()
+        private void SetSecondPlayerController()
         {
-            Data.SelectCharacterPlayer = _blueCharacter;
+            Data.SelectCharacterPlayer = _secondCharacter;
             Data.SelectCharacterPlayer.SetPlayerController();
 
-            _hideIndication.SetActivYellowIndication(false);
-            _yellowCharacter.Destroy();
+            _hideIndication.SetActivFirstIndication(false);
+            _firstCharacter.Destroy();
 
             StateSwitcher.SwitchState<SurvivalProcess>();
         }

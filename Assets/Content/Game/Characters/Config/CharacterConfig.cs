@@ -5,10 +5,10 @@ namespace FightParty.Game
     [CreateAssetMenu(fileName = "CharacterConfig", menuName = "Game/CharacterConfig")]
     public class CharacterConfig : ScriptableObject
     {
-        [SerializeField] private Character _yellowCharacter;
-        [SerializeField] private Character _blueCharacter;
+        [SerializeField] private Character _firstCharacter;
+        [SerializeField] private Character _secondCharacter;
 
-        public Character YellowCharacter => _yellowCharacter;
-        public Character BlueCharacter => _blueCharacter;
+        public Character FirstCharacter => _firstCharacter;
+        public Character SecondCharacter => _secondCharacter;
     }
 }
