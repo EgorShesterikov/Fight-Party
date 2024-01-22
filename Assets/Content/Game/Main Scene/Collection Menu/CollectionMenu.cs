@@ -7,6 +7,9 @@ namespace FightParty.Game.MainScene
 {
     public partial class CollectionMenu : IDisposable
     {
+        private const string Localization_BattleSkinInfo_Key = "Interfaces/CollectionMenu-2";
+        private const string Localization_SurvivalSkinInfo_Key = "Interfaces/CollectionMenu-3";
+
         public event Action SelectedRing;
         public event Action<int> ChangedRing;
 
@@ -95,12 +98,12 @@ namespace FightParty.Game.MainScene
 
                 case 1:
                     if(_skinChanger.SetSkin(RingSkinTypes.Battle) == false)
-                        _view.OpenLockPanel(LocalizationManager.GetTermTranslation("Interfaces/CollectionMenu-2"));
+                        _view.OpenLockPanel(LocalizationManager.GetTermTranslation(Localization_BattleSkinInfo_Key));
                     break;
 
                 case 2:
                     if (_skinChanger.SetSkin(RingSkinTypes.Survival) == false)
-                        _view.OpenLockPanel(LocalizationManager.GetTermTranslation("Interfaces/CollectionMenu-3"));
+                        _view.OpenLockPanel(LocalizationManager.GetTermTranslation(Localization_SurvivalSkinInfo_Key));
                     break;
 
                 default:

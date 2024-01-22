@@ -5,6 +5,8 @@ namespace FightParty.Game
 {
     public class CharacterPreparation : CharacterState
     {
+        private const string AnimPreparationTrigger = "Preparation";
+
         private const int ChanceRandomJump = 30;
         private const int ChanceTargetPlayerJump = ChanceRandomJump + 10;
         private const int ChanceTargetBallJump = ChanceTargetPlayerJump + 20;
@@ -21,7 +23,7 @@ namespace FightParty.Game
 
         public override void Enter()
         {
-            Character.Animator.SetTrigger("Preparation");
+            Character.Animator.SetTrigger(AnimPreparationTrigger);
 
             Character.Jumped += GoToJump;
             Character.BallTriggered += TakeDamage;

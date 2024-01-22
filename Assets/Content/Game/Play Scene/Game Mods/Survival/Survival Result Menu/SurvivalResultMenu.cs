@@ -6,6 +6,8 @@ namespace FightParty.Game.PlayScene.Survival
 {
     public class SurvivalResultMenu : IDisposable, IResult<int>
     {
+        private const string NameResultSound = "Result";
+
         public event Action ClickedMenu;
 
         private SurvivalResultMenuView _view;
@@ -34,7 +36,7 @@ namespace FightParty.Game.PlayScene.Survival
         {
             _view.Open();
 
-            _view.Audio.PlaySound(0);
+            _view.Audio.PlaySound(NameResultSound);
 
             _view.SetResult(second);
 

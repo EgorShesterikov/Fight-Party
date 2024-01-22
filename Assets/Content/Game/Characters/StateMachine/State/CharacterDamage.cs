@@ -4,6 +4,11 @@ namespace FightParty.Game
 {
     public class CharacterDamage : CharacterState
     {
+        private const string NameDamageSound_1 = "Damage_1";
+        private const string NameDamageSound_2 = "Damage_2";
+
+        private const string AnimDamageTrigger = "Damage";
+
         private const float LengthDamageAnim = 0.533f;
         private float _timeEndAnim;
 
@@ -17,11 +22,14 @@ namespace FightParty.Game
         {
             Character.CurrentHeal--;
 
-            Character.Audio.PlaySound(Random.Range(0, 2));
+            if(Random.Range(0, 2) == 0)
+                Character.Audio.PlaySound(NameDamageSound_1);
+            else
+                Character.Audio.PlaySound(NameDamageSound_2);
 
             if (Character.CurrentHeal > 0)
             {
-                Character.Animator.SetTrigger("Damage");
+                Character.Animator.SetTrigger(AnimDamageTrigger);
                 _timeEndAnim = LengthDamageAnim;
             }
             else

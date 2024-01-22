@@ -7,19 +7,31 @@ namespace FightParty.Audio
     [RequireComponent(typeof(AudioSource))]
     public class AudioComponent : MonoBehaviour
     {
-        [SerializeField] private List<AudioClip> _sounds;
+        [SerializeField] private List<Sound> _soundsCollection;
 
         private AudioSource _audioSource;
 
-        private void Start()
+        public void Start()
             => _audioSource = GetComponent<AudioSource>();
 
-        public void PlaySound(int indexSound)
+        public void PlaySound(string nameSound)
         {
-            if(indexSound < 0 || indexSound >= _sounds.Count)
-                throw new ArgumentOutOfRangeException(nameof(indexSound));
+            Sound sound = _soundsCollection.Find((sound) => sound.Name == nameSound);
 
-            _audioSource.PlayOneShot(_sounds[indexSound]);
+            if (sound != null)
+                _audioSource.PlayOneShot(sound.Clip);
+            else
+                throw new NotImplementedException();
+        }
+
+        [Serializable]
+        private class Sound
+        {
+            [SerializeField] private string _name;
+            [SerializeField] private AudioClip _clip;
+
+            public string Name => _name;
+            public AudioClip Clip => _clip;
         }
     }
 }

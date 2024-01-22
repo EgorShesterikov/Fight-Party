@@ -8,6 +8,8 @@ namespace FightParty.Game.PlayScene.Survival
 {
     public class SurvivalResultMenuView : WindowBase
     {
+        private const string Localization_SurvivalRecord_Key = "Interfaces/SurvivalMenu-1";
+
         [SerializeField] private TextMeshProUGUI _resultText;
         [SerializeField] private TextMeshProUGUI _recordText;
 
@@ -23,7 +25,7 @@ namespace FightParty.Game.PlayScene.Survival
             => _resultText.text = SecondConverter.ConvertSecondInTimeFormat(second);
 
         public void SetRecord(int second)
-            => _recordText.text = LocalizationManager.GetTermTranslation("Interfaces/SurvivalMenu-1")
+            => _recordText.text = LocalizationManager.GetTermTranslation(Localization_SurvivalRecord_Key)
             + SecondConverter.ConvertSecondInTimeFormat(second);
 
         private void Start()

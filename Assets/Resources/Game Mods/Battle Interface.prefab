@@ -710,6 +710,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a4d7baa695dcca644931577edbc6e577, type: 3}
   - {fileID: 8300000, guid: 99be68a6276bd3f4ba090f7ffef4ca4c, type: 3}
   - {fileID: 8300000, guid: 571ef5c0584a7c4439395c5d9f150242, type: 3}
+  _soundsCollection:
+  - _name: Win
+    _clip: {fileID: 8300000, guid: a4d7baa695dcca644931577edbc6e577, type: 3}
+  - _name: Lose
+    _clip: {fileID: 8300000, guid: 99be68a6276bd3f4ba090f7ffef4ca4c, type: 3}
+  - _name: Draw
+    _clip: {fileID: 8300000, guid: 571ef5c0584a7c4439395c5d9f150242, type: 3}
 --- !u!114 &5623678074510778123
 MonoBehaviour:
   m_ObjectHideFlags: 0

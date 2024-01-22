@@ -135,6 +135,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sounds:
   - {fileID: 8300000, guid: b99c6b1a308dac44292f5c0b172bfcac, type: 3}
+  _soundsCollection:
+  - _name: Hit
+    _clip: {fileID: 8300000, guid: b99c6b1a308dac44292f5c0b172bfcac, type: 3}
 --- !u!114 &2911647157787324288
 MonoBehaviour:
   m_ObjectHideFlags: 0

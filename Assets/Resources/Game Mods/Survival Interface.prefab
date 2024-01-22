@@ -632,6 +632,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sounds:
   - {fileID: 8300000, guid: 571ef5c0584a7c4439395c5d9f150242, type: 3}
+  _soundsCollection:
+  - _name: Result
+    _clip: {fileID: 8300000, guid: 571ef5c0584a7c4439395c5d9f150242, type: 3}
 --- !u!114 &3438996202162664045
 MonoBehaviour:
   m_ObjectHideFlags: 0

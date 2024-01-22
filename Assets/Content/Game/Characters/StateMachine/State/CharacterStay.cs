@@ -2,6 +2,8 @@
 {
     public class CharacterStay : CharacterState
     {
+        private const string AnimStayTrigger = "Stay";
+
         public CharacterStay(IStateSwitcher stateSwitcher, CharacterStateMachineData data, Character character) 
             : base(stateSwitcher, data, character)
         {
@@ -9,7 +11,7 @@
 
         public override void Enter()
         {
-            Character.Animator.SetTrigger("Stay");
+            Character.Animator.SetTrigger(AnimStayTrigger);
 
             Character.Prepared += GoToPreparation;
             Character.BallTriggered += TakeDamage;

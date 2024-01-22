@@ -4,6 +4,9 @@ namespace FightParty.Game
 {
     public class CharacterJump : CharacterState
     {
+        private const string NameJumpSound = "Jump";
+        private const string AnimJumpTrigger = "Jump";
+
         private const float PowerJump = 7500;
         private const float LengthJumpAnim = 1.167f;
 
@@ -19,7 +22,7 @@ namespace FightParty.Game
 
         public override void Enter()
         {
-            Character.Animator.SetTrigger("Jump");
+            Character.Animator.SetTrigger(AnimJumpTrigger);
             _timeEndAnim = LengthJumpAnim;
 
             _jumpDirectionEuler = Character.JumpDirection.transform.eulerAngles;
@@ -29,7 +32,7 @@ namespace FightParty.Game
 
             Character.BallTriggered += TakeDamage;
 
-            Character.Audio.PlaySound(2);
+            Character.Audio.PlaySound(NameJumpSound);
         }
 
         public override void Exit()

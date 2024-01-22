@@ -2873,6 +2873,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e4e3072732c00e641acef1cdf9670d97, type: 3}
   - {fileID: 8300000, guid: cda226cb9154ed5489af510ee4481e02, type: 3}
   - {fileID: 8300000, guid: d0a70146adb95bf4682a169c6cc85f9b, type: 3}
+  _soundsCollection:
+  - _name: Damage_1
+    _clip: {fileID: 8300000, guid: e4e3072732c00e641acef1cdf9670d97, type: 3}
+  - _name: Damage_2
+    _clip: {fileID: 8300000, guid: cda226cb9154ed5489af510ee4481e02, type: 3}
+  - _name: Jump
+    _clip: {fileID: 8300000, guid: d0a70146adb95bf4682a169c6cc85f9b, type: 3}
 --- !u!114 &-3219569693889559837
 MonoBehaviour:
   m_ObjectHideFlags: 0

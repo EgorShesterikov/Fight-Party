@@ -6,6 +6,10 @@ namespace FightParty.Game.PlayScene.Battle
 {
     public class BattleResultMenu : IDisposable, IResults
     {
+        private const string NameWinSound = "Win";
+        private const string NameLoseSound = "Lose";
+        private const string NameDrawSound = "Draw";
+
         public event Action ClickedMenu;
 
         private BattleResultMenuView _view;
@@ -35,7 +39,7 @@ namespace FightParty.Game.PlayScene.Battle
             _view.Open();
             _view.SetWinText();
 
-            _view.Audio.PlaySound(0);
+            _view.Audio.PlaySound(NameWinSound);
 
             ProgressJSON progressJSON = _progressManager.Load();
 
@@ -49,7 +53,7 @@ namespace FightParty.Game.PlayScene.Battle
             _view.Open();
             _view.SetLoseText();
 
-            _view.Audio.PlaySound(1);
+            _view.Audio.PlaySound(NameLoseSound);
         }
 
         public void Draw()
@@ -57,7 +61,7 @@ namespace FightParty.Game.PlayScene.Battle
             _view.Open();
             _view.SetDrawText();
 
-            _view.Audio.PlaySound(2);
+            _view.Audio.PlaySound(NameDrawSound);
         }
 
         private void ClickMenuButton()

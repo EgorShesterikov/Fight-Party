@@ -4,6 +4,8 @@ namespace FightParty.Game
 {
     public class DestroyBall : Ball
     {
+        private const string GroundTag = "Ground";
+
         [SerializeField] private ParticleSystem _destroyEffect;
 
         private const float TimeToDestroy = 0.25f;
@@ -12,9 +14,9 @@ namespace FightParty.Game
         {
             base.OnTriggerEnter(other);
 
-            if (other.CompareTag("Ground"))
+            if (other.CompareTag(GroundTag))
             {
-                Invoke("SpawnDestroyEffect", TimeToDestroy);
+                Invoke(nameof(SpawnDestroyEffect), TimeToDestroy);
                 Destroy(gameObject, TimeToDestroy);
             }
             else if (other.TryGetComponent(out Character character))

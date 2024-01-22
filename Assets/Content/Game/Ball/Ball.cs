@@ -1,5 +1,4 @@
 using FightParty.Audio;
-using System;
 using UnityEngine;
 
 namespace FightParty.Game
@@ -7,6 +6,8 @@ namespace FightParty.Game
     [RequireComponent(typeof(Rigidbody), typeof(AudioComponent))]
     public abstract class Ball : MonoBehaviour
     {
+        private const string NameHitSound = "Hit";
+
         private const float IsMoveInaccuracy = 0.25f;
         private const float IsjumpInaccuracy = 2.15f;
         private const float SpeedToStop = 1f;
@@ -103,7 +104,7 @@ namespace FightParty.Game
                 return;
 
             _currentTimeSoundRestore = TimeSoundRestore;
-            _audioComponent.PlaySound(0);
+            _audioComponent.PlaySound(NameHitSound);
         }
     }
 }
