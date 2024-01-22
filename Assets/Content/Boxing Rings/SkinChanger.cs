@@ -3,7 +3,7 @@ using System;
 
 namespace FightParty.Game
 {
-    public class SkinChanger
+    public partial class SkinChanger
     {
         private int _indexCurrentSkin;
 
@@ -18,84 +18,59 @@ namespace FightParty.Game
             _progressManager = progressManager;
 
             ProgressJSON progressJSON = _progressManager.Load();
-
-            switch(progressJSON.RingIndex)
-            {
-                case 0:
-                    SetDefaultSkin();
-                    break;
-
-                case 1:
-                    SetBattleSkin();
-                    break;
-
-                case 2:
-                    SetSurvivalSkin();
-                    break;
-
-                default:
-                    throw new NotImplementedException();
-            }
+            SetSkin((RingSkinTypes)progressJSON.RingIndex);
         }
 
         public int IndexCurrentSkin => _indexCurrentSkin;
 
-        public bool SetDefaultSkin()
+        public bool SetSkin(RingSkinTypes skinType)
         {
-            _indexCurrentSkin = 0;
+            _indexCurrentSkin = (int)skinType;
 
+            bool isChange = false;
             ProgressJSON progressJSON = _progressManager.Load();
 
-            _config.TargetMaterial.mainTexture = _config.DefaultTexture;
-
-            progressJSON.RingIndex = _indexCurrentSkin;
-            _progressManager.Save(progressJSON);
-
-            return true;
-        }
-
-        public bool SetBattleSkin()
-        {
-            _indexCurrentSkin = 1;
-
-            ProgressJSON progressJSON = _progressManager.Load();
-
-            if (progressJSON.BattleVictories >= 10)
+            switch (skinType)
             {
-                _config.TargetMaterial.mainTexture = _config.BattleTexture;
+                case RingSkinTypes.Default:
 
+                    _config.TargetMaterial.mainTexture = _config.DefaultTexture;
+                    isChange = true;
+
+                    break;
+
+                case RingSkinTypes.Battle:
+
+                    if (progressJSON.BattleVictories >= 10)
+                    {
+                        _config.TargetMaterial.mainTexture = _config.BattleTexture;
+                        isChange = true;
+                    }
+
+                    break;
+
+                case RingSkinTypes.Survival:
+
+                    if (progressJSON.SurvivalTime >= 120)
+                    {
+                        _config.TargetMaterial.mainTexture = _config.SurvivalTexture;
+                        isChange = true;
+                    }
+
+                    break;
+            }
+
+            if (isChange)
+            {
                 progressJSON.RingIndex = _indexCurrentSkin;
                 _progressManager.Save(progressJSON);
-
-                return true;
             }
             else
             {
                 _config.TargetMaterial.mainTexture = _config.CloseTexture;
-                return false;
             }
-        }
 
-        public bool SetSurvivalSkin()
-        {
-            _indexCurrentSkin = 2;
-
-            ProgressJSON progressJSON = _progressManager.Load();
-
-            if (progressJSON.SurvivalTime >= 120)
-            {
-                _config.TargetMaterial.mainTexture = _config.SurvivalTexture;
-
-                progressJSON.RingIndex = _indexCurrentSkin;
-                _progressManager.Save(progressJSON);
-
-                return true;
-            }
-            else
-            {
-                _config.TargetMaterial.mainTexture = _config.CloseTexture;
-                return false;
-            }
+            return isChange;
         }
 
         public bool IsCloseTexture()

@@ -90,16 +90,16 @@ namespace FightParty.Game.MainScene
             switch(_currentRing)
             {
                 case 0:
-                    _skinChanger.SetDefaultSkin();
+                    _skinChanger.SetSkin(RingSkinTypes.Default);
                     break;
 
                 case 1:
-                    if(_skinChanger.SetBattleSkin() == false)
+                    if(_skinChanger.SetSkin(RingSkinTypes.Battle) == false)
                         _view.OpenLockPanel(LocalizationManager.GetTermTranslation("Interfaces/CollectionMenu-2"));
                     break;
 
                 case 2:
-                    if (_skinChanger.SetSurvivalSkin() == false)
+                    if (_skinChanger.SetSkin(RingSkinTypes.Survival) == false)
                         _view.OpenLockPanel(LocalizationManager.GetTermTranslation("Interfaces/CollectionMenu-3"));
                     break;
 
